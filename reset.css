@@ -60,3 +60,7 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+label {
+  display: block;
+}
