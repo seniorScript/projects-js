@@ -4,6 +4,7 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const chooseFile = document.getElementById("choose-file");
 const colorDisplay = document.getElementById("color-display");
+const pickedColor = document.getElementById("picked-color");
 
 chooseFile.addEventListener("click", () => imageInput.click());
 imageInput.addEventListener("change", handleImageChange);
