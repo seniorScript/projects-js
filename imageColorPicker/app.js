@@ -1,9 +1,8 @@
 const imageInput = document.getElementById("image-input");
 const imagePreview = document.getElementById("image-preview");
-
 const chooseFile = document.getElementById("choose-file");
-chooseFile.addEventListener("click", () => imageInput.click());
 
+chooseFile.addEventListener("click", () => imageInput.click());
 imageInput.addEventListener("change", displayImage);
 
 function displayImage(event) {
