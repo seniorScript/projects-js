@@ -5,7 +5,7 @@ const canvas = document.getElementById("canvas");
 const colorDisplay = document.getElementById("color-display");
 
 chooseFile.addEventListener("click", () => imageInput.click());
-imageInput.addEventListener("change", displayImage);
+imageInput.addEventListener("change", handleImageChange);
 
 function handleImageChange(event) {
   const file = event.target.files[0];
