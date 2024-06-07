@@ -1,7 +1,8 @@
 const imageInput = document.getElementById("image-input");
 const imagePreview = document.getElementById("image-preview");
-const chooseFile = document.getElementById("choose-file");
 const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+const chooseFile = document.getElementById("choose-file");
 const colorDisplay = document.getElementById("color-display");
 
 chooseFile.addEventListener("click", () => imageInput.click());
