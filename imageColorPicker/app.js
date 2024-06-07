@@ -20,3 +20,9 @@ function displayImage(event) {
     imagePreview.appendChild(img);
   }
 }
+
+function drawImageOnCanvas(img) {
+  canvas.width = img.width;
+  canvas.height = img.height;
+  ctx.drawImage(img, 0, 0, img.width, img.height);
+}
