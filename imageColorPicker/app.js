@@ -50,10 +50,16 @@ function displayColorValue(value) {
   pickedColor.innerHTML = value;
 }
 
+pickedColor.addEventListener("click", () => {
+  const p = document.createElement("p");
+  p.textContent = pickedColor.textContent;
+  copyText(p.innerHTML);
+});
+
 async function copyText(text) {
   try {
     await navigator.clipboard.writeText(text);
-    alert("Content copied to clipboard");
+    alert(text);
   } catch (err) {
     alert("Failed to copy: ", err);
   }
