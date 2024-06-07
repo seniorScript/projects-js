@@ -7,6 +7,13 @@ const colorDisplay = document.getElementById("color-display");
 chooseFile.addEventListener("click", () => imageInput.click());
 imageInput.addEventListener("change", displayImage);
 
+function handleImageChange(event) {
+  const file = event.target.files[0];
+  if (file) {
+    displayImage(file);
+  }
+}
+
 function displayImage(event) {
   const file = event.target.files[0];
   if (file) {
