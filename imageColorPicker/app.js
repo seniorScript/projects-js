@@ -49,3 +49,13 @@ function pickColor(event, img) {
 function displayColorValue(value) {
   pickedColor.innerHTML = value;
 }
+
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    alert("Content copied to clipboard");
+  } catch (err) {
+    alert("Failed to copy: ", err);
+  }
+}
+
