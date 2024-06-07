@@ -14,18 +14,18 @@ function handleImageChange(event) {
   }
 }
 
-function displayImage(event) {
-  const file = event.target.files[0];
-  if (file) {
-    imagePreview.innerHTML = "";
-    const img = document.createElement("img");
-    const source = URL.createObjectURL(file);
-    img.src = source;
-    img.style.display = "block";
-    img.style.width = "50%";
-    img.style.hight = "50%";
-    imagePreview.appendChild(img);
-  }
+function displayImage(file) {
+  imagePreview.innerHTML = "";
+  const img = document.createElement("img");
+  const source = URL.createObjectURL(file);
+  img.src = source;
+  img.style.display = "block";
+  img.style.width = "50%";
+  img.style.height = "50%";
+  imagePreview.appendChild(img);
+
+  img.onload = () => drawImageOnCanvas(img);
+  img.addEventListener("click", (event) => pickColor(event, img));
 }
 
 function drawImageOnCanvas(img) {
