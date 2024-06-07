@@ -44,3 +44,7 @@ function pickColor(event, img) {
   const rgbColor = `rgb(${imageData[0]}, ${imageData[1]}, ${imageData[2]})`;
   colorDisplay.style.backgroundColor = rgbColor;
 }
+
+function displayColorValue(value) {
+  pickedColor.innerHTML = value;
+}
