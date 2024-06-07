@@ -28,6 +28,7 @@ body {
 #image-preview {
   display: flex;
   justify-content: center;
+  padding-top: 20px;
 }
 
 #image-input {
