@@ -41,7 +41,8 @@ body {
 #color-display {
   width: 50px;
   height: 50px;
-  border: 1px solid #000;
+  border: 2px solid #000;
+  border-radius: 100%;
   margin-top: 10px;
   cursor: pointer;
 }
