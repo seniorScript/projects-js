@@ -43,6 +43,7 @@ function pickColor(event, img) {
   const imageData = ctx.getImageData(x, y, 1, 1).data;
   const rgbColor = `rgb(${imageData[0]}, ${imageData[1]}, ${imageData[2]})`;
   colorDisplay.style.backgroundColor = rgbColor;
+  displayColorValue(rgbColor);
 }
 
 function displayColorValue(value) {
