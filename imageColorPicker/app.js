@@ -33,3 +33,12 @@ function drawImageOnCanvas(img) {
   canvas.height = img.height;
   ctx.drawImage(img, 0, 0, img.width, img.height);
 }
+
+function pickColor(event, img) {
+  const rect = img.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  const imageData = ctx.getImageData(x, y, 1, 1).data;
+  const rgbColor = `rgb(${imageData[0]}, ${imageData[1]}, ${imageData[2]})`;
+  colorDisplay.style.backgroundColor = rgbColor;
+}
