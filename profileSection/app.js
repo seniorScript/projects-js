@@ -5,6 +5,9 @@ const profilePicture = document.querySelector(".profile-picture img");
 const name = document.getElementById("name");
 const newName = document.getElementById("new-name");
 
+const city = document.getElementById("city");
+const newCity = document.getElementById("new-city");
+
 profileContainer.addEventListener("click", () => {
   imageInput.click();
 });
@@ -26,10 +29,21 @@ name.addEventListener("click", () => {
   name.style.display = "none";
 });
 
+city.addEventListener("click", () => {
+  newCity.style.display = "block";
+  city.style.display = "none";
+});
+
 newName.addEventListener("change", (e) => {
   changeName(newName.value);
   newName.style.display = "none";
   newName.value = "";
+});
+
+newCity.addEventListener("change", (e) => {
+  changeCity(newCity.value);
+  newCity.style.display = "none";
+  newCity.value = "";
 });
 
 function changeName(newName) {
@@ -37,3 +51,7 @@ function changeName(newName) {
   name.style.display = "block";
 }
 
+function changeCity(newCity) {
+  city.innerHTML = newCity;
+  city.style.display = "block";
+}
