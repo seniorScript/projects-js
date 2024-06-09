@@ -15,6 +15,10 @@ body {
   padding: 20px;
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .profile-picture {
@@ -44,7 +48,7 @@ body {
   justify-self: center;
   align-items: center;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
 
 #name {
