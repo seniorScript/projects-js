@@ -101,6 +101,8 @@ body {
   flex-direction: column;
   align-items: start;
   border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .skill-list {
