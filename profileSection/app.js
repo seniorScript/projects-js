@@ -24,34 +24,23 @@ function displayImage(e) {
   }
 }
 
-name.addEventListener("click", () => {
-  newName.style.display = "block";
-  name.style.display = "none";
-});
+function changeText(originalInput, newInput) {
+  originalInput.addEventListener("click", () => {
+    newInput.style.display = "block";
+    originalInput.style.display = "none";
+  });
 
-city.addEventListener("click", () => {
-  newCity.style.display = "block";
-  city.style.display = "none";
-});
-
-newName.addEventListener("change", (e) => {
-  changeName(newName.value);
-  newName.style.display = "none";
-  newName.value = "";
-});
-
-newCity.addEventListener("change", (e) => {
-  changeCity(newCity.value);
-  newCity.style.display = "none";
-  newCity.value = "";
-});
-
-function changeName(newName) {
-  name.innerHTML = newName;
-  name.style.display = "block";
+  newInput.addEventListener("change", () => {
+    changeTextValue(originalInput, newInput.value);
+    newInput.style.display = "none";
+    newInput.value = "";
+  });
 }
 
-function changeCity(newCity) {
-  city.innerHTML = newCity;
-  city.style.display = "block";
+changeText(name, newName);
+changeText(city, newCity);
+
+function changeTextValue(oldText, newText) {
+  oldText.innerHTML = newText;
+  oldText.style.display = "block";
 }
