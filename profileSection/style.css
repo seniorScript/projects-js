@@ -7,6 +7,7 @@ body {
 }
 
 .card {
+  padding-top: 20px;
   width: 350px;
   min-height: 350px;
   background-color: #231e39;
