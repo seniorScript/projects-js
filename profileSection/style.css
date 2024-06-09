@@ -16,3 +16,25 @@ body {
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.profile-picture {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-picture img {
+  width: 110px;
+  height: 110px;
+  border-radius: 100%;
+  background-color: #28223f;
+  border: 2px solid #136e80;
+  padding: 5px;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+#choose-image {
+  display: none;
+}
