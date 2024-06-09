@@ -87,3 +87,26 @@ body {
   border: 2px solid #03bfcb;
   color: #03bfcb;
 }
+
+.skills {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: start;
+}
+
+.skill-list {
+  padding-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: #9c9fb5;
+  gap: 13px;
+}
+
+.skill-card {
+  border: 1px solid #9c9fb576;
+  border-radius: 2px;
+  padding: 4px;
+  cursor: pointer;
+}
