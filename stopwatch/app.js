@@ -27,6 +27,7 @@ class Stopwatch {
   stop() {
     let timeElapsed = Date.now() - this.counter;
     updateTime(timeElapsed);
+    updateDisplay();
   }
 
   // update the time based on timeElapsed
@@ -42,4 +43,12 @@ class Stopwatch {
 
     this.time.miliseconds = remainder;
   }
+
+  updateDisplay() {
+    hour.textContent = this.time.hours.toString().padStart(2, "0");
+    minute.textContent = this.time.minute.toString().padStart(2, "0");
+    seconds.textContent = this.time.seconds.toString().padStart(2, "0");
+    miliseconds.textContent = this.time.miliseconds.toString().padStart(3, "0");
+  }
 }
+
