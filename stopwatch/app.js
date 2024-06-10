@@ -22,4 +22,13 @@ class Stopwatch {
   start() {
     this.counter = Date.now();
   }
+
+  // stop the stopwatch
+  stop() {
+    let timeElapsed = Date.now() - this.counter;
+    updateTime(timeElapsed);
+  }
+
+  // update the time based on timeElapsed
+  updateTime(timeElapsed) {}
 }
