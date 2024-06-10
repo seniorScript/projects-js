@@ -17,4 +17,9 @@ class Stopwatch {
       miliseconds: 0,
     };
   }
+
+  // start the stopwatch
+  start() {
+    this.counter = Date.now();
+  }
 }
