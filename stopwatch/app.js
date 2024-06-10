@@ -51,6 +51,18 @@ class Stopwatch {
     seconds.textContent = this.time.seconds.toString().padStart(2, "0");
     miliseconds.textContent = this.time.miliseconds.toString().padStart(3, "0");
   }
+
+  reset() {
+    this.stop();
+    this.totalTime = 0;
+    this.time = {
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+      miliseconds: 0,
+    };
+    this.updateDisplay();
+  }
 }
 
 const watch = new Stopwatch();
@@ -61,4 +73,8 @@ start.addEventListener("click", () => {
 
 stop.addEventListener("click", () => {
   watch.stop();
+});
+
+reset.addEventListener("click", () => {
+  watch.reset();
 });
