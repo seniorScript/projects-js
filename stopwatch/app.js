@@ -1,5 +1,5 @@
 const hour = document.getElementById("hour");
-const minute = document.getElementById("minute");
+const minutes = document.getElementById("minutes");
 const seconds = document.getElementById("seconds");
 const miliseconds = document.getElementById("miliseconds");
 
@@ -13,7 +13,7 @@ class Stopwatch {
     this.counter = 0;
     this.time = {
       hours: 0,
-      minute: 0,
+      minutes: 0,
       seconds: 0,
       miliseconds: 0,
     };
@@ -36,7 +36,7 @@ class Stopwatch {
     this.time.hours = Math.floor(timeElapsed / 3600000);
     let remainder = timeElapsed % 3600000;
 
-    this.time.minute = Math.floor(remainder / 60000);
+    this.time.minutes = Math.floor(remainder / 60000);
     remainder = remainder % 60000;
 
     this.time.seconds = Math.floor(remainder / 1000);
@@ -47,7 +47,7 @@ class Stopwatch {
 
   updateDisplay() {
     hour.textContent = this.time.hours.toString().padStart(2, "0");
-    minute.textContent = this.time.minute.toString().padStart(2, "0");
+    minutes.textContent = this.time.minutes.toString().padStart(2, "0");
     seconds.textContent = this.time.seconds.toString().padStart(2, "0");
     miliseconds.textContent = this.time.miliseconds.toString().padStart(3, "0");
   }
