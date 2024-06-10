@@ -9,6 +9,7 @@ const reset = document.getElementById("reset");
 
 class Stopwatch {
   constructor() {
+    this.totalTime = 0;
     this.counter = 0;
     this.time = {
       hours: 0,
@@ -25,9 +26,9 @@ class Stopwatch {
 
   // stop the stopwatch
   stop() {
-    let timeElapsed = Date.now() - this.counter;
-    updateTime(timeElapsed);
-    updateDisplay();
+    this.totalTime += Date.now() - this.counter;
+    this.updateTime(this.totalTime);
+    this.updateDisplay();
   }
 
   // update the time based on timeElapsed
