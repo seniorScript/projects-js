@@ -53,3 +53,12 @@ class Stopwatch {
   }
 }
 
+const watch = new Stopwatch();
+
+start.addEventListener("click", () => {
+  watch.start();
+});
+
+stop.addEventListener("click", () => {
+  watch.stop();
+});
