@@ -18,6 +18,7 @@ class Stopwatch {
       miliseconds: 0,
     };
     this.running = false;
+    this.intervalId = null;
   }
 
   // start the stopwatch
@@ -27,16 +28,25 @@ class Stopwatch {
     } else {
       this.counter = Date.now();
       this.running = true;
+
+      this.intervalId = setInterval(() => {
+        this.totalTime += Date.now() - this.counter;
+        this.counter = Date.now();
+        this.updateTime(this.totalTime);
+        this.updateDisplay();
+      }, 50);
     }
   }
 
   // stop the stopwatch
   stop() {
     if (this.running) {
+      clearInterval(this.intervalId);
       this.totalTime += Date.now() - this.counter;
       this.updateTime(this.totalTime);
       this.updateDisplay();
       this.running = false;
+      this.intervalId = null;
     } else {
       return;
     }
