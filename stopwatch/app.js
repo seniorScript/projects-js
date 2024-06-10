@@ -30,5 +30,16 @@ class Stopwatch {
   }
 
   // update the time based on timeElapsed
-  updateTime(timeElapsed) {}
+  updateTime(timeElapsed) {
+    this.time.hours = Math.floor(timeElapsed / 3600000);
+    let remainder = timeElapsed % 3600000;
+
+    this.time.minute = Math.floor(remainder / 60000);
+    remainder = remainder % 60000;
+
+    this.time.seconds = Math.floor(remainder / 1000);
+    remainder = remainder % 1000;
+
+    this.time.miliseconds = remainder;
+  }
 }
