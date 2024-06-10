@@ -7,3 +7,20 @@ body {
   background-color: #28223f;
   color: #fff;
 }
+
+#stopwatch {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+#stopwatch .numbers {
+  display: flex;
+  text-align: center;
+  border: 2px solid #fff;
+  padding: 10px;
+}
+
+.numbers p {
+  flex: 1;
+}
