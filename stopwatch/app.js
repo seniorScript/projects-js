@@ -17,18 +17,29 @@ class Stopwatch {
       seconds: 0,
       miliseconds: 0,
     };
+    this.running = false;
   }
 
   // start the stopwatch
   start() {
-    this.counter = Date.now();
+    if (this.running) {
+      return;
+    } else {
+      this.counter = Date.now();
+      this.running = true;
+    }
   }
 
   // stop the stopwatch
   stop() {
-    this.totalTime += Date.now() - this.counter;
-    this.updateTime(this.totalTime);
-    this.updateDisplay();
+    if (this.running) {
+      this.totalTime += Date.now() - this.counter;
+      this.updateTime(this.totalTime);
+      this.updateDisplay();
+      this.running = false;
+    } else {
+      return;
+    }
   }
 
   // update the time based on timeElapsed
