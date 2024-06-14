@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Image Color Picker",
+    "url": "/profileSection/index.html",
+    "tags": [
+      "DOMManipulation",
+      "EventHandling",
+      "FileAPI",
+      "CanvasAPI",
+      "ImageProcessing"
+    ]
+  },
+  {
+    "name": "Profile Section",
+    "url": "/profileSection/index.html",
+    "tags": ["File Selection", "DOM Manipulation", "Input Change"]
+  },
+  {
+    "name": "Stopwatch",
+    "url": "/stopwatch/index.html",
+    "tags": ["Class", "OOP", "Live update", "Calculation"]
+  }
+]
