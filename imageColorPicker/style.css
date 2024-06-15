@@ -13,7 +13,7 @@ body {
   background-color: #101015;
   color: #fff;
   position: relative;
-  padding: 100px;
+  padding: 100px 0 200px;
   overflow-y: scroll;
 }
 
