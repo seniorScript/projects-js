@@ -6,6 +6,7 @@ const ctx = canvas.getContext("2d");
 const colorDisplay = document.getElementById("color-display");
 const pickedColor = document.getElementById("picked-color");
 
+const label = document.getElementById("label");
 const toolSection = document.getElementById("tools");
 
 let mode = null;
@@ -76,6 +77,7 @@ function displayImage(file) {
 
   img.onload = () => drawImageOnCanvas(img);
   img.addEventListener("click", (event) => pickColor(event, img));
+  label.style.display = "none";
   showTools();
 }
 
