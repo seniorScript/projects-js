@@ -60,7 +60,9 @@ body {
 
 #image-form label {
   position: absolute;
-  top: 25px;
+  top: 50px;
+  font-family: cursive;
+  font-size: 1.6rem;
 }
 
 #image-preview {
