@@ -6,6 +6,8 @@ const ctx = canvas.getContext("2d");
 const colorDisplay = document.getElementById("color-display");
 const pickedColor = document.getElementById("picked-color");
 
+const toolSection = document.getElementById("tools");
+
 let mode = null;
 const colorSwitcher = document.getElementById("color-switcher");
 const cropSwitcher = document.getElementById("crop-switcher");
@@ -16,6 +18,10 @@ function removeActiveClass() {
   tools.forEach((tool) => {
     tool.classList.remove("selected");
   });
+}
+
+function showTools() {
+  toolSection.style.display = "flex";
 }
 
 colorSwitcher.addEventListener("click", () => {
@@ -70,6 +76,7 @@ function displayImage(file) {
 
   img.onload = () => drawImageOnCanvas(img);
   img.addEventListener("click", (event) => pickColor(event, img));
+  showTools();
 }
 
 function drawImageOnCanvas(img) {
