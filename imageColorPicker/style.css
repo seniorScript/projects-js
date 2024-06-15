@@ -28,7 +28,7 @@ body {
 
 .toolbar > * {
   cursor: pointer;
-  transform: scale(1.5);
+  transform: scale(1.7);
 }
 
 #add {
