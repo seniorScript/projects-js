@@ -31,6 +31,18 @@ body {
   transform: scale(1.5);
 }
 
+#add {
+  color: #9ee22f;
+}
+
+#power {
+  color: #2fa2e2;
+}
+
+#folder {
+  color: #e22f90;
+}
+
 .image-container {
   display: flex;
   justify-content: center;
