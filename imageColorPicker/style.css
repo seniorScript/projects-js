@@ -13,6 +13,8 @@ body {
   background-color: #101015;
   color: #fff;
   position: relative;
+  padding: 100px;
+  overflow-y: scroll;
 }
 
 .toolbar {
