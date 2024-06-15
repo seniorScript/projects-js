@@ -1,12 +1,12 @@
+const addButton = document.getElementById("add");
 const imageInput = document.getElementById("image-input");
 const imagePreview = document.getElementById("image-preview");
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-const chooseFile = document.getElementById("choose-file");
 const colorDisplay = document.getElementById("color-display");
 const pickedColor = document.getElementById("picked-color");
 
-chooseFile.addEventListener("click", () => imageInput.click());
+addButton.addEventListener("click", () => imageInput.click());
 imageInput.addEventListener("change", handleImageChange);
 
 function handleImageChange(event) {
@@ -64,4 +64,3 @@ async function copyText(text) {
     alert("Failed to copy: ", err);
   }
 }
-
