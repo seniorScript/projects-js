@@ -17,6 +17,10 @@ body {
   overflow-y: scroll;
 }
 
+.selected {
+  border: 2px solid #fff;
+}
+
 .toolbar {
   background-color: #1b1b20;
   padding: 20px 40px;
