@@ -45,6 +45,36 @@ body {
   color: #e22f90;
 }
 
+#tools {
+  padding: 20px 40px;
+  display: flex;
+  gap: 30px;
+  border-radius: 10px;
+  position: fixed;
+  bottom: 100px;
+}
+
+#tools > * {
+  cursor: pointer;
+  background-color: #1b1b20;
+  box-shadow: 0px 0px 1px 1px #2c2c38;
+  padding: 20px;
+  border-radius: 10px;
+  transform: scale(1.2);
+}
+
+#color-switcher {
+  color: #e29a2f;
+}
+
+#crop-switcher {
+  color: #2fe2a0;
+}
+
+#filter-switcher {
+  color: #6e84ff;
+}
+
 .image-container {
   display: flex;
   justify-content: center;
