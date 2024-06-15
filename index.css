@@ -31,6 +31,7 @@ ol li {
   padding: 15px;
   background-color: #2a2d42;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 ol li:hover {
@@ -47,5 +48,4 @@ ol li a {
   height: 100%;
   display: flex;
   text-align: left;
-  border-radius: 10px;
 }
