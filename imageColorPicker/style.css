@@ -17,13 +17,18 @@ body {
 
 .toolbar {
   background-color: #1b1b20;
-  padding: 10px 30px;
+  padding: 20px 40px;
   display: flex;
   gap: 50px;
   border-radius: 10px;
   box-shadow: 0px 0px 1px 1px #2c2c38;
   position: absolute;
   bottom: 25px;
+}
+
+.toolbar > * {
+  cursor: pointer;
+  transform: scale(1.5);
 }
 
 .image-container {
