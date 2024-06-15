@@ -15,9 +15,17 @@
     </div>
 
     <div id="tools">
-      <ion-icon id="color-switcher" name="color-palette-outline"></ion-icon>
-      <ion-icon id="crop-switcher" name="crop-outline"></ion-icon>
-      <ion-icon id="filter-switcher" name="color-filter-outline"></ion-icon>
+      <ion-icon
+        id="color-switcher"
+        mode="color"
+        name="color-palette-outline"
+      ></ion-icon>
+      <ion-icon id="crop-switcher" mode="crop" name="crop-outline"></ion-icon>
+      <ion-icon
+        id="filter-switcher"
+        mode="filter"
+        name="color-filter-outline"
+      ></ion-icon>
     </div>
     <div class="image-container">
       <form id="image-form">
@@ -30,7 +38,7 @@
       <canvas id="canvas"></canvas>
       <div id="color-display"></div>
     </div>
-    <p>Color : <span id="picked-color"></span></p>
+    <p><span id="picked-color"></span></p>
     <script src="app.js"></script>
     <script
       type="module"

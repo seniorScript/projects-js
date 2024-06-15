@@ -6,6 +6,18 @@ const ctx = canvas.getContext("2d");
 const colorDisplay = document.getElementById("color-display");
 const pickedColor = document.getElementById("picked-color");
 
+let mode = null;
+const colorSwitcher = document.getElementById("color-switcher");
+const cropSwitcher = document.getElementById("crop-switcher");
+const filterSwitcher = document.getElementById("filter-switcher");
+const tools = document.querySelectorAll("#tools > *");
+
+tools.forEach((tool) => {
+  tool.addEventListener("click", () => {
+    mode = tool.mode;
+  });
+});
+
 addButton.addEventListener("click", () => imageInput.click());
 imageInput.addEventListener("change", handleImageChange);
 
