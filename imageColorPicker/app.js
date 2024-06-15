@@ -12,10 +12,40 @@ const cropSwitcher = document.getElementById("crop-switcher");
 const filterSwitcher = document.getElementById("filter-switcher");
 const tools = document.querySelectorAll("#tools > *");
 
-tools.forEach((tool) => {
-  tool.addEventListener("click", () => {
-    mode = tool.mode;
+function removeActiveClass() {
+  tools.forEach((tool) => {
+    tool.classList.remove("selected");
   });
+}
+
+colorSwitcher.addEventListener("click", () => {
+  if (mode === "color") return;
+  else {
+    mode = "color";
+    removeActiveClass();
+    colorSwitcher.classList.add("selected");
+    handleColorPicker();
+  }
+});
+
+cropSwitcher.addEventListener("click", () => {
+  if (mode === "crop") return;
+  else {
+    mode = "crop";
+    removeActiveClass();
+    cropSwitcher.classList.add("selected");
+    handleCrop();
+  }
+});
+
+filterSwitcher.addEventListener("click", () => {
+  if (mode === "filter") return;
+  else {
+    mode = "filter";
+    removeActiveClass();
+    filterSwitcher.classList.add("selected");
+    handleFilter();
+  }
 });
 
 addButton.addEventListener("click", () => imageInput.click());
@@ -75,4 +105,19 @@ async function copyText(text) {
   } catch (err) {
     alert("Failed to copy: ", err);
   }
+}
+
+function handleColorPicker() {
+  // color picker is being handled
+  console.log("color picker actived");
+}
+
+function handleCrop() {
+  // crop is being handled
+  console.log("crop actived");
+}
+
+function handleFilter() {
+  // filter is being handled
+  console.log("filter actived");
 }
