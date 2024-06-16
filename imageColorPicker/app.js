@@ -78,6 +78,21 @@ function manipulateImage(event) {
 
 function displayColorValue(value) {
   pickedColor.innerHTML = value;
+  if (mode === "color") {
+    ShowColorTool(true);
+  } else {
+    ShowColorTool(false);
+  }
+}
+
+function ShowColorTool(show) {
+  if (show) {
+    pickedColor.style.display = "block";
+    colorDisplay.style.display = "block";
+  } else {
+    pickedColor.style.display = "none";
+    colorDisplay.style.display = "none";
+  }
 }
 
 // event listeners
@@ -86,8 +101,10 @@ colorSwitcher.addEventListener("click", () => {
   else {
     mode = "color";
     removeActiveClass();
+    ShowColorTool(true);
     colorSwitcher.classList.add("selected");
     currentImage.addEventListener("click", manipulateImage);
+    toolSection.classList.add("color-mode");
   }
 });
 
@@ -95,9 +112,11 @@ cropSwitcher.addEventListener("click", () => {
   if (mode === "crop") return;
   else {
     mode = "crop";
+    ShowColorTool(false);
     removeActiveClass();
     cropSwitcher.classList.add("selected");
     currentImage.removeEventListener("click", manipulateImage);
+    toolSection.classList.remove("color-mode");
   }
 });
 
@@ -105,9 +124,11 @@ filterSwitcher.addEventListener("click", () => {
   if (mode === "filter") return;
   else {
     mode = "filter";
+    ShowColorTool(false);
     removeActiveClass();
     filterSwitcher.classList.add("selected");
     currentImage.removeEventListener("click", manipulateImage);
+    toolSection.classList.remove("color-mode");
   }
 });
 
