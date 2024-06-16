@@ -45,8 +45,11 @@ function displayImage(file) {
   const source = URL.createObjectURL(file);
   img.src = source;
   img.style.display = "block";
-  img.style.width = "50%";
-  img.style.height = "50%";
+  img.style.maxWidth = "400px";
+  img.style.maxHeight = "500px";
+  img.style.width = "auto";
+  img.style.height = "auto";
+
   imagePreview.appendChild(img);
 
   img.onload = () => drawImageOnCanvas(img);
