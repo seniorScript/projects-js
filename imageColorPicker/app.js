@@ -111,7 +111,6 @@ colorSwitcher.addEventListener("click", () => {
     ShowColorTool(true);
     colorSwitcher.classList.add("selected");
     addImageClickListener();
-    toolSection.classList.add("color-mode");
   }
 });
 
@@ -123,7 +122,6 @@ cropSwitcher.addEventListener("click", () => {
     removeActiveClass();
     cropSwitcher.classList.add("selected");
     currentImage.removeEventListener("click", manipulateImage);
-    toolSection.classList.remove("color-mode");
   }
 });
 
@@ -135,7 +133,6 @@ filterSwitcher.addEventListener("click", () => {
     removeActiveClass();
     filterSwitcher.classList.add("selected");
     currentImage.removeEventListener("click", manipulateImage);
-    toolSection.classList.remove("color-mode");
   }
 });
 
