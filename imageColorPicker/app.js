@@ -53,10 +53,13 @@ function displayImage(file) {
 
   imagePreview.appendChild(img);
 
-  img.onload = () => drawImageOnCanvas(img);
-  currentImage = img;
-  label.innerHTML = "Manipulate the image!";
-  showTools();
+  img.onload = () => {
+    drawImageOnCanvas(img);
+    currentImage = img;
+    label.innerHTML = "Manipulate the image!";
+    showTools();
+    addImageClickListener();
+  };
 }
 
 function drawImageOnCanvas(img) {
@@ -95,6 +98,10 @@ function ShowColorTool(show) {
   }
 }
 
+function addImageClickListener() {
+  currentImage.addEventListener("click", manipulateImage);
+}
+
 // event listeners
 colorSwitcher.addEventListener("click", () => {
   if (mode === "color") return;
@@ -103,7 +110,7 @@ colorSwitcher.addEventListener("click", () => {
     removeActiveClass();
     ShowColorTool(true);
     colorSwitcher.classList.add("selected");
-    currentImage.addEventListener("click", manipulateImage);
+    addImageClickListener();
     toolSection.classList.add("color-mode");
   }
 });
