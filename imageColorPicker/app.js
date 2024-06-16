@@ -20,6 +20,7 @@ const cropSwitcher = document.getElementById("crop-switcher");
 const filterSwitcher = document.getElementById("filter-switcher");
 
 let mode = null;
+let currentImage = null;
 
 // functions
 function removeActiveClass() {
@@ -53,7 +54,7 @@ function displayImage(file) {
   imagePreview.appendChild(img);
 
   img.onload = () => drawImageOnCanvas(img);
-  img.addEventListener("click", (event) => pickColor(event, img));
+  currentImage = img;
   label.innerHTML = "Manipulate the image!";
   showTools();
 }
@@ -64,8 +65,9 @@ function drawImageOnCanvas(img) {
   ctx.drawImage(img, 0, 0, img.width, img.height);
 }
 
-function pickColor(event, img) {
-  const rect = img.getBoundingClientRect();
+function manipulateImage(event) {
+  if (mode !== "color") return;
+  const rect = currentImage.getBoundingClientRect();
   const x = event.clientX - rect.left;
   const y = event.clientY - rect.top;
   const imageData = ctx.getImageData(x, y, 1, 1).data;
@@ -78,20 +80,46 @@ function displayColorValue(value) {
   pickedColor.innerHTML = value;
 }
 
-function handleColorPicker() {
-  // color picker is being handled
-  console.log("color picker actived");
-}
+// event listeners
+colorSwitcher.addEventListener("click", () => {
+  if (mode === "color") return;
+  else {
+    mode = "color";
+    removeActiveClass();
+    colorSwitcher.classList.add("selected");
+    currentImage.addEventListener("click", manipulateImage);
+  }
+});
 
-function handleCrop() {
-  // crop is being handled
-  console.log("crop actived");
-}
+cropSwitcher.addEventListener("click", () => {
+  if (mode === "crop") return;
+  else {
+    mode = "crop";
+    removeActiveClass();
+    cropSwitcher.classList.add("selected");
+    currentImage.removeEventListener("click", manipulateImage);
+  }
+});
 
-function handleFilter() {
-  // filter is being handled
-  console.log("filter actived");
-}
+filterSwitcher.addEventListener("click", () => {
+  if (mode === "filter") return;
+  else {
+    mode = "filter";
+    removeActiveClass();
+    filterSwitcher.classList.add("selected");
+    currentImage.removeEventListener("click", manipulateImage);
+  }
+});
+
+addButton.addEventListener("click", () => imageInput.click());
+
+imageInput.addEventListener("change", handleImageChange);
+
+pickedColor.addEventListener("click", () => {
+  const p = document.createElement("p");
+  p.textContent = pickedColor.textContent;
+  copyText(p.innerHTML);
+});
 
 async function copyText(text) {
   try {
@@ -110,44 +138,3 @@ const rgbToHex = (r, g, b) =>
       return hex.length === 1 ? "0" + hex : hex;
     })
     .join("");
-
-// event listeners
-colorSwitcher.addEventListener("click", () => {
-  if (mode === "color") return;
-  else {
-    mode = "color";
-    removeActiveClass();
-    colorSwitcher.classList.add("selected");
-    handleColorPicker();
-  }
-});
-
-cropSwitcher.addEventListener("click", () => {
-  if (mode === "crop") return;
-  else {
-    mode = "crop";
-    removeActiveClass();
-    cropSwitcher.classList.add("selected");
-    handleCrop();
-  }
-});
-
-filterSwitcher.addEventListener("click", () => {
-  if (mode === "filter") return;
-  else {
-    mode = "filter";
-    removeActiveClass();
-    filterSwitcher.classList.add("selected");
-    handleFilter();
-  }
-});
-
-addButton.addEventListener("click", () => imageInput.click());
-
-imageInput.addEventListener("change", handleImageChange);
-
-pickedColor.addEventListener("click", () => {
-  const p = document.createElement("p");
-  p.textContent = pickedColor.textContent;
-  copyText(p.innerHTML);
-});
