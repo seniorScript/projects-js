@@ -117,7 +117,7 @@ body {
 #color-display {
   width: 150px;
   height: 30px;
-  border: 2px solid #000;
+  border: 2px solid #fff;
   border-radius: 10px;
   margin-top: 10px;
   cursor: pointer;
