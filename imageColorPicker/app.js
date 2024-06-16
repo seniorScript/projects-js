@@ -111,42 +111,24 @@ function addImageClickListener() {
   currentImage.addEventListener("click", manipulateImage);
 }
 
+function setMode(newMode, switcherElement) {
+  if (mode === newMode) return;
+  mode = newMode;
+  removeActiveClass();
+  ShowColorTool(newMode === "color");
+  switcherElement.classList.add("selected");
+  addImageClickListener();
+}
+
 // event listeners
-colorSwitcher.addEventListener("click", () => {
-  if (mode === "color") return;
-  else {
-    mode = "color";
-    removeActiveClass();
-    ShowColorTool(true);
-    colorSwitcher.classList.add("selected");
-    addImageClickListener();
-  }
-});
+colorSwitcher.addEventListener("click", () => setMode("color", colorSwitcher));
+cropSwitcher.addEventListener("click", () => setMode("crop", cropSwitcher));
+filterSwitcher.addEventListener("click", () =>
+  setMode("filter", filterSwitcher)
+);
 
-cropSwitcher.addEventListener("click", () => {
-  if (mode === "crop") return;
-  else {
-    mode = "crop";
-    ShowColorTool(false);
-    removeActiveClass();
-    cropSwitcher.classList.add("selected");
-    addImageClickListener();
-  }
-});
-
-filterSwitcher.addEventListener("click", () => {
-  if (mode === "filter") return;
-  else {
-    mode = "filter";
-    ShowColorTool(false);
-    removeActiveClass();
-    filterSwitcher.classList.add("selected");
-    addImageClickListener();
-  }
-});
 
 addButton.addEventListener("click", () => imageInput.click());
-
 imageInput.addEventListener("change", handleImageChange);
 
 pickedColor.addEventListener("click", () => {
