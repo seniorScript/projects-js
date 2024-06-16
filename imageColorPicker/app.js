@@ -18,6 +18,9 @@ const domElements = {
 let mode = null;
 let currentImage = null;
 
+let cropStart = null;
+let CropEnd = null;
+
 // Utility Functions
 const removeActiveClass = () => {
   domElements.tools.forEach((tool) => {
@@ -79,7 +82,14 @@ const manipulateImage = (event) => {
   }
 
   // Placeholder for crop and filter modes
-  if (mode === "crop") console.log("crop");
+  if (mode === "crop") {
+    if (!cropStart) {
+      cropStart = { x, y };
+    } else {
+      cropEnd = { x, y };
+    }
+  }
+
   if (mode === "filter") console.log("filter");
 };
 
