@@ -69,14 +69,23 @@ function drawImageOnCanvas(img) {
 }
 
 function manipulateImage(event) {
-  if (mode !== "color") return;
-  const rect = currentImage.getBoundingClientRect();
-  const x = event.clientX - rect.left;
-  const y = event.clientY - rect.top;
-  const imageData = ctx.getImageData(x, y, 1, 1).data;
-  const rgbColor = `rgb(${imageData[0]}, ${imageData[1]}, ${imageData[2]})`;
-  colorDisplay.style.backgroundColor = rgbColor;
-  displayColorValue(rgbToHex(imageData[0], imageData[1], imageData[2]));
+  if (mode === "color") {
+    const rect = currentImage.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const imageData = ctx.getImageData(x, y, 1, 1).data;
+    const rgbColor = `rgb(${imageData[0]}, ${imageData[1]}, ${imageData[2]})`;
+    colorDisplay.style.backgroundColor = rgbColor;
+    displayColorValue(rgbToHex(imageData[0], imageData[1], imageData[2]));
+  }
+
+  if (mode === "crop") {
+    console.log("crop");
+  }
+
+  if (mode === "filter") {
+    console.log("filter");
+  }
 }
 
 function displayColorValue(value) {
@@ -121,7 +130,7 @@ cropSwitcher.addEventListener("click", () => {
     ShowColorTool(false);
     removeActiveClass();
     cropSwitcher.classList.add("selected");
-    currentImage.removeEventListener("click", manipulateImage);
+    addImageClickListener();
   }
 });
 
@@ -132,7 +141,7 @@ filterSwitcher.addEventListener("click", () => {
     ShowColorTool(false);
     removeActiveClass();
     filterSwitcher.classList.add("selected");
-    currentImage.removeEventListener("click", manipulateImage);
+    addImageClickListener();
   }
 });
 
