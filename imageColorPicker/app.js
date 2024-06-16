@@ -54,7 +54,7 @@ function displayImage(file) {
 
   img.onload = () => drawImageOnCanvas(img);
   img.addEventListener("click", (event) => pickColor(event, img));
-  label.style.display = "none";
+  label.innerHTML = "Manipulate the image!";
   showTools();
 }
 
