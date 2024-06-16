@@ -115,10 +115,11 @@ body {
 }
 
 #color-display {
-  width: 50px;
-  height: 50px;
+  width: 150px;
+  height: 30px;
   border: 2px solid #000;
-  border-radius: 100%;
+  border-radius: 10px;
   margin-top: 10px;
   cursor: pointer;
+  transition: 1s;
 }
