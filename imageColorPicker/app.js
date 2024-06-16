@@ -47,6 +47,7 @@ const displayImage = (file) => {
   img.src = URL.createObjectURL(file);
   img.style.maxWidth = "400px";
   img.style.maxHeight = "500px";
+  img.draggable = false;
   img.onload = () => {
     domElements.imagePreview.innerHTML = "";
     domElements.imagePreview.appendChild(img);
