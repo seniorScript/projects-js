@@ -108,6 +108,7 @@ function ShowColorTool(show) {
 }
 
 function addImageClickListener() {
+  currentImage.removeEventListener("click", manipulateImage);
   currentImage.addEventListener("click", manipulateImage);
 }
 
@@ -126,7 +127,6 @@ cropSwitcher.addEventListener("click", () => setMode("crop", cropSwitcher));
 filterSwitcher.addEventListener("click", () =>
   setMode("filter", filterSwitcher)
 );
-
 
 addButton.addEventListener("click", () => imageInput.click());
 imageInput.addEventListener("change", handleImageChange);
