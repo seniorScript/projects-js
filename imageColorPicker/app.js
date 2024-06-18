@@ -1,52 +1,21 @@
+import {
+  removeActiveClass,
+  showTools,
+  showElement,
+  rgbToHex,
+} from "./utility.js";
+import { domElements } from "./DomElements.js";
+
 // Constants
 const MODE_COLOR = "color";
 const MODE_CROP = "crop";
 const MODE_FILTER = "filter";
-
-// DOM Elements
-const domElements = {
-  addButton: document.getElementById("add"),
-  imageInput: document.getElementById("image-input"),
-  imagePreview: document.getElementById("image-preview"),
-  canvas: document.getElementById("canvas"),
-  ctx: document.getElementById("canvas").getContext("2d"),
-  colorDisplay: document.getElementById("color-display"),
-  pickedColor: document.getElementById("picked-color"),
-  label: document.getElementById("label"),
-  tools: document.querySelectorAll("#tools > *"),
-  toolSection: document.getElementById("tools"),
-  colorSwitcher: document.getElementById("color-switcher"),
-  cropSwitcher: document.getElementById("crop-switcher"),
-  filterSwitcher: document.getElementById("filter-switcher"),
-  filterRange: document.getElementById("filter-range"),
-  contrast: document.getElementById("contrast"),
-  brightness: document.getElementById("brightness"),
-  saturation: document.getElementById("saturation"),
-};
 
 let mode = null;
 let currentImage = null;
 
 let cropStart = null;
 let cropEnd = null;
-
-// Utility Functions
-const removeActiveClass = () => {
-  domElements.tools.forEach((tool) => {
-    tool.classList.remove("selected");
-  });
-};
-
-const showTools = () => {
-  domElements.toolSection.style.display = "flex";
-};
-
-const showElement = (element, show) => {
-  element.style.display = show ? "block" : "none";
-};
-
-const rgbToHex = (r, g, b) =>
-  `#${[r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("")}`;
 
 // Image Handling Functions
 const handleImageChange = (event) => {
