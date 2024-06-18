@@ -1,3 +1,9 @@
+// Global main variables
+let mode = null;
+let currentImage = null;
+let cropStart = null;
+let cropEnd = null;
+
 import {
   removeActiveClass,
   showTools,
@@ -8,12 +14,6 @@ import {
 
 import { domElements } from "./DomElements.js";
 import { MODE_COLOR, MODE_CROP, MODE_FILTER } from "./constants.js";
-
-let mode = null;
-let currentImage = null;
-
-let cropStart = null;
-let cropEnd = null;
 
 // Image Handling Functions
 const handleImageChange = (event) => {
