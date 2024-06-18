@@ -124,3 +124,7 @@ body {
   transition: 1s;
   display: none;
 }
+
+#filter-range {
+  display: none;
+}

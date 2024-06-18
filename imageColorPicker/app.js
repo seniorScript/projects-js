@@ -13,6 +13,10 @@ const domElements = {
   colorSwitcher: document.getElementById("color-switcher"),
   cropSwitcher: document.getElementById("crop-switcher"),
   filterSwitcher: document.getElementById("filter-switcher"),
+  filterRange: document.getElementById("filter-range"),
+  contrast: document.getElementById("contrast"),
+  brightness: document.getElementById("brightness"),
+  saturation: document.getElementById("saturation"),
 };
 
 let mode = null;
@@ -83,11 +87,7 @@ const manipulateImage = (event) => {
 
   // Placeholder for crop and filter modes
   if (mode === "crop") {
-    if (!cropStart) {
-      cropStart = { x, y };
-    } else {
-      cropEnd = { x, y };
-    }
+    // doing crop things
   }
 
   if (mode === "filter") console.log("filter");
