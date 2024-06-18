@@ -24,6 +24,10 @@ const handleImageChange = (event) => {
   if (file) displayImage(file);
 };
 
+const setCurrentImage = (newImg) => {
+  currentImage = newImg;
+};
+
 const displayImage = (file) => {
   const img = new Image();
   img.src = URL.createObjectURL(file);
@@ -32,7 +36,7 @@ const displayImage = (file) => {
     domElements.imagePreview.innerHTML = "";
     domElements.imagePreview.appendChild(img);
     drawImageOnCanvas(img);
-    currentImage = img;
+    setCurrentImage(img);
     domElements.label.innerHTML = "Manipulate the image!";
     showTools();
     addImageClickListener();
