@@ -16,3 +16,12 @@ export const showElement = (element, show) => {
 
 export const rgbToHex = (r, g, b) =>
   `#${[r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("")}`;
+
+export const copyText = async (text) => {
+  try {
+    await navigator.clipboard.writeText(text);
+    alert(text);
+  } catch (err) {
+    alert("Failed to copy: ", err);
+  }
+};

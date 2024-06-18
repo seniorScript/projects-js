@@ -3,6 +3,7 @@ import {
   showTools,
   showElement,
   rgbToHex,
+  copyText,
 } from "./utility.js";
 import { domElements } from "./DomElements.js";
 
@@ -111,12 +112,3 @@ domElements.pickedColor.addEventListener("click", () => {
   p.textContent = domElements.pickedColor.textContent;
   copyText(p.innerHTML);
 });
-
-const copyText = async (text) => {
-  try {
-    await navigator.clipboard.writeText(text);
-    alert(text);
-  } catch (err) {
-    alert("Failed to copy: ", err);
-  }
-};
