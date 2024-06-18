@@ -5,12 +5,9 @@ import {
   rgbToHex,
   copyText,
 } from "./utility.js";
-import { domElements } from "./DomElements.js";
 
-// Constants
-const MODE_COLOR = "color";
-const MODE_CROP = "crop";
-const MODE_FILTER = "filter";
+import { domElements } from "./DomElements.js";
+import { MODE_COLOR, MODE_CROP, MODE_FILTER } from "./constants.js";
 
 let mode = null;
 let currentImage = null;
