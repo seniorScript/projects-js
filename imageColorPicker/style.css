@@ -128,3 +128,8 @@ body {
 #filter-range {
   display: none;
 }
+
+.image-preview {
+  max-width: 400px;
+  max-height: 500px;
+}
