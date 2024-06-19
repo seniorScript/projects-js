@@ -11,7 +11,6 @@ import {
   rgbToHex,
   copyText,
   getPosition,
-  getPosition,
 } from "./utility.js";
 
 import { domElements } from "./DomElements.js";
