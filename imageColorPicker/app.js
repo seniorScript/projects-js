@@ -57,6 +57,7 @@ const handleCrop = (start, end) => {
   const height = Math.abs(endY - startY);
 
   console.log({ startX, startY, endX, endY, width, height });
+  updateModeUI(MODE_COLOR, domElements.colorSwitcher);
 };
 
 const manipulateImage = (event) => {
