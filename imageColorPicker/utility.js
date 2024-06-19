@@ -25,3 +25,10 @@ export const copyText = async (text) => {
     alert("Failed to copy: ", err);
   }
 };
+
+export const getPosition = (img) => {
+  const rect = img.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  return { x, y };
+};
