@@ -3,6 +3,7 @@ let mode = null;
 let currentImage = null;
 let cropStart = null;
 let cropEnd = null;
+let isCropping = null;
 
 import {
   removeActiveClass,
@@ -46,6 +47,11 @@ const displayColorValue = (value) => {
   showElement(domElements.colorDisplay, mode === MODE_COLOR);
 };
 
+const handleCrop = (start, end) => {
+  console.log(start);
+  console.log(end);
+};
+
 const manipulateImage = (event) => {
   if (!currentImage) return;
   const { x, y } = getPosition(currentImage);
@@ -58,7 +64,17 @@ const manipulateImage = (event) => {
   }
 
   if (mode === MODE_CROP) {
-    // Crop logic
+    if (!isCropping) {
+      isCropping = true;
+      cropStart = getPosition(currentImage);
+    } else {
+      isCropping = false;
+      cropEnd = getPosition(currentImage);
+
+      if (cropStart && cropEnd) {
+        handleCrop(cropStart, cropEnd);
+      }
+    }
   }
 
   if (mode === MODE_FILTER) {
