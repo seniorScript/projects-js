@@ -11,62 +11,34 @@ import {
   rgbToHex,
   copyText,
   getPosition,
+  getPosition,
 } from "./utility.js";
 
 import { domElements } from "./DomElements.js";
 import { MODE_COLOR, MODE_CROP, MODE_FILTER } from "./constants.js";
 
-// Image Handling Functions
-const handleImageChange = (event) => {
-  const file = event.target.files[0];
-  if (file) displayImage(file);
-};
+// Utility functions
+const setCurrentImage = (img) => (currentImage = img);
 
-const setCurrentImage = (newImg) => {
-  currentImage = newImg;
-};
+const setMode = (newMode) => (mode = newMode);
 
-const displayImage = (file) => {
+const createImage = (src) => {
   const img = new Image();
-  img.src = URL.createObjectURL(file);
+  img.src = src;
   img.classList.add("image-preview");
-  img.onload = () => {
-    domElements.imagePreview.innerHTML = "";
-    domElements.imagePreview.appendChild(img);
-    drawImageOnCanvas(img);
-    setCurrentImage(img);
-    domElements.label.innerHTML = "Manipulate the image!";
-    showTools();
-    addImageClickListener();
-  };
-  img.onerror = () => {
-    alert("Failed to load image.");
-  };
+  return img;
+};
+
+const updateLabel = (text) => (domElements.label.innerHTML = text);
+
+const updateCanvasSize = (img) => {
+  domElements.canvas.width = img.width;
+  domElements.canvas.height = img.height;
 };
 
 const drawImageOnCanvas = (img) => {
-  domElements.canvas.width = img.width;
-  domElements.canvas.height = img.height;
+  updateCanvasSize(img);
   domElements.ctx.drawImage(img, 0, 0, img.width, img.height);
-};
-
-const manipulateImage = (event) => {
-  if (!currentImage) return;
-  const { x, y } = getPosition(currentImage);
-  const imageData = domElements.ctx.getImageData(x, y, 1, 1).data;
-  const rgbColor = `rgb(${imageData[0]}, ${imageData[1]}, ${imageData[2]})`;
-
-  if (mode === MODE_COLOR) {
-    domElements.colorDisplay.style.backgroundColor = rgbColor;
-    displayColorValue(rgbToHex(imageData[0], imageData[1], imageData[2]));
-  }
-
-  // Placeholder for crop and filter modes
-  if (mode === MODE_CROP) {
-    // doing crop things
-  }
-
-  if (mode === MODE_FILTER) console.log("filter");
 };
 
 const displayColorValue = (value) => {
@@ -75,16 +47,61 @@ const displayColorValue = (value) => {
   showElement(domElements.colorDisplay, mode === MODE_COLOR);
 };
 
+const manipulateImage = (event) => {
+  if (!currentImage) return;
+  const rect = currentImage.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  const imageData = domElements.ctx.getImageData(x, y, 1, 1).data;
+  const rgbColor = `rgb(${imageData[0]}, ${imageData[1]}, ${imageData[2]})`;
+
+  if (mode === MODE_COLOR) {
+    domElements.colorDisplay.style.backgroundColor = rgbColor;
+    displayColorValue(rgbToHex(imageData[0], imageData[1], imageData[2]));
+  }
+
+  if (mode === MODE_CROP) {
+    // Crop logic
+  }
+
+  if (mode === MODE_FILTER) {
+    console.log("filter");
+  }
+};
+
 const addImageClickListener = () => {
   currentImage.removeEventListener("click", manipulateImage);
   currentImage.addEventListener("click", manipulateImage);
 };
 
+const handleImageLoad = (img) => {
+  domElements.imagePreview.innerHTML = "";
+  domElements.imagePreview.appendChild(img);
+  drawImageOnCanvas(img);
+  setCurrentImage(img);
+  updateLabel("Manipulate the image!");
+  showTools(domElements.toolSection);
+  addImageClickListener();
+};
+
+const handleImageError = () => alert("Failed to load image.");
+
+const displayImage = (file) => {
+  const img = createImage(URL.createObjectURL(file));
+  img.onload = () => handleImageLoad(img);
+  img.onerror = handleImageError;
+};
+
+const handleImageChange = (event) => {
+  const file = event.target.files[0];
+  if (file) displayImage(file);
+};
+
 // Tool Mode Handling
-const setMode = (newMode, switcherElement) => {
+const updateModeUI = (newMode, switcherElement) => {
   if (mode === newMode) return;
-  mode = newMode;
-  removeActiveClass();
+  setMode(newMode);
+  removeActiveClass(domElements.tools);
   showElement(domElements.pickedColor, newMode === MODE_COLOR);
   showElement(domElements.colorDisplay, newMode === MODE_COLOR);
   switcherElement.classList.add("selected");
@@ -93,13 +110,13 @@ const setMode = (newMode, switcherElement) => {
 
 // Event Listeners
 domElements.colorSwitcher.addEventListener("click", () =>
-  setMode(MODE_COLOR, domElements.colorSwitcher)
+  updateModeUI(MODE_COLOR, domElements.colorSwitcher)
 );
 domElements.cropSwitcher.addEventListener("click", () =>
-  setMode(MODE_CROP, domElements.cropSwitcher)
+  updateModeUI(MODE_CROP, domElements.cropSwitcher)
 );
 domElements.filterSwitcher.addEventListener("click", () =>
-  setMode(MODE_FILTER, domElements.filterSwitcher)
+  updateModeUI(MODE_FILTER, domElements.filterSwitcher)
 );
 
 domElements.addButton.addEventListener("click", () =>
