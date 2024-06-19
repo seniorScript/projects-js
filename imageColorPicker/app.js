@@ -48,8 +48,15 @@ const displayColorValue = (value) => {
 };
 
 const handleCrop = (start, end) => {
-  console.log(start);
-  console.log(end);
+  const startX = Math.min(start.x, end.x);
+  const startY = Math.min(start.y, end.y);
+  const endX = Math.max(start.x, end.x);
+  const endY = Math.max(start.y, end.y);
+
+  const width = Math.abs(endX - startX);
+  const height = Math.abs(endY - startY);
+
+  console.log({ startX, startY, endX, endY, width, height });
 };
 
 const manipulateImage = (event) => {
