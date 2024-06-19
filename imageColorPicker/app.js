@@ -48,9 +48,7 @@ const displayColorValue = (value) => {
 
 const manipulateImage = (event) => {
   if (!currentImage) return;
-  const rect = currentImage.getBoundingClientRect();
-  const x = event.clientX - rect.left;
-  const y = event.clientY - rect.top;
+  const { x, y } = getPosition(currentImage);
   const imageData = domElements.ctx.getImageData(x, y, 1, 1).data;
   const rgbColor = `rgb(${imageData[0]}, ${imageData[1]}, ${imageData[2]})`;
 
