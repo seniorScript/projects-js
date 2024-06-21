@@ -35,14 +35,20 @@ let currentImage = null;
 
 const colorSwitcher = document.getElementById("color-switcher");
 const cropSwitcher = document.getElementById("crop-switcher");
+const filterSwitcher = document.getElementById("filter-switcher");
+
+filterSwitcher.addEventListener("click", (e) => {
+  removeActiveClass();
+  filterSwitcher.classList.add("selected");
+  console.log("filter");
+});
 
 colorSwitcher.addEventListener("click", (e) => {
+  removeActiveClass();
+  colorSwitcher.classList.add("selected");
   mode = "color";
-  pickedColor.style.display = "block";
-  // Clear the previous rectangle
   context.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Redraw the image to clear any previous drawings
   if (currentImage) {
     context.drawImage(currentImage, 0, 0, canvas.width, canvas.height);
   }
@@ -50,6 +56,8 @@ colorSwitcher.addEventListener("click", (e) => {
 
 cropSwitcher.addEventListener("click", () => {
   mode = "crop";
+  removeActiveClass();
+  cropSwitcher.classList.add("selected");
   pickedColor.style.display = "none";
 });
 
@@ -88,11 +96,9 @@ function handleCrop(e) {
     endY = pos.y;
     cropStart = false;
 
-    // Ask for confirmation (you can implement this part in various ways)
     if (confirm("Confirm crop?")) {
       cropTheImage();
     } else {
-      // Clear crop selection if not confirmed
       context.clearRect(0, 0, canvas.width, canvas.height);
       if (currentImage) {
         context.drawImage(currentImage, 0, 0, canvas.width, canvas.height);
@@ -107,26 +113,21 @@ function cropTheImage() {
   let width = Math.abs(startX - endX);
   let height = Math.abs(startY - endY);
 
-  // Create a temporary canvas to hold the cropped image
   let tempCanvas = document.createElement("canvas");
   let tempContext = tempCanvas.getContext("2d");
   tempCanvas.width = width;
   tempCanvas.height = height;
 
-  // Perform the crop operation
   tempContext.drawImage(canvas, minX, minY, width, height, 0, 0, width, height);
 
-  // Clear the original canvas and draw the cropped image back
   context.clearRect(0, 0, canvas.width, canvas.height);
   canvas.width = width;
   canvas.height = height;
   context.drawImage(tempCanvas, 0, 0, width, height);
 
-  // Update currentImage with the cropped image
   currentImage = new Image();
-  currentImage.src = tempCanvas.toDataURL(); // Convert cropped canvas to data URL
+  currentImage.src = tempCanvas.toDataURL();
 
-  // Reset mode and UI
   mode = null;
   pickedColor.style.display = "none";
 }
@@ -167,28 +168,32 @@ canvas.addEventListener("mousemove", (e) => {
   if (mode === "crop" && cropStart) {
     const pos = getMousePosition(e);
 
-    // Clear the previous rectangle
     context.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Redraw the image to clear any previous drawings
     if (currentImage) {
       context.drawImage(currentImage, 0, 0, canvas.width, canvas.height);
     }
 
-    // Calculate the starting position and size of the rectangle
     let startXPos = Math.min(startX, pos.x);
     let startYPos = Math.min(startY, pos.y);
     let w = Math.abs(startX - pos.x);
     let h = Math.abs(startY - pos.y);
 
-    // Draw the new rectangle
     context.beginPath();
     context.rect(startXPos, startYPos, w, h);
-    context.strokeStyle = "red"; // Optional: change the color of the rectangle
+    context.strokeStyle = "red";
     context.stroke();
   }
 });
 
 function RgbToHex(r, g, b) {
   return `#${[r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("")}`;
+}
+
+const switchers = document.querySelectorAll("#tools > *");
+
+function removeActiveClass() {
+  switchers.forEach((s) => {
+    s.classList.remove("selected");
+  });
 }
