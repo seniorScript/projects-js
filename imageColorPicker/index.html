@@ -11,7 +11,7 @@
     <div class="toolbar">
       <ion-icon id="power" name="power-outline"></ion-icon>
       <ion-icon id="add" name="add-circle-outline"></ion-icon>
-      <ion-icon id="folder" name="folder-outline"></ion-icon>
+      <ion-icon id="download" name="arrow-down-circle-outline"></ion-icon>
     </div>
 
     <div id="tools">
@@ -27,18 +27,21 @@
         name="color-filter-outline"
       ></ion-icon>
     </div>
+
     <div class="image-container">
       <form id="image-form">
         <label id="label" for="image-input">Choose Your Image</label>
         <input type="file" name="image" id="image-input" />
       </form>
-      <div id="image-preview"></div>
     </div>
+
     <div class="color-picker-container">
       <canvas id="canvas"></canvas>
       <div id="color-display"></div>
     </div>
+
     <p><span id="picked-color"></span></p>
+
     <div id="filter-range">
       <div id="contrast-container">
         <p>Contrast</p>
@@ -46,7 +49,7 @@
       </div>
 
       <div id="brightness-container">
-        <p>Contrast</p>
+        <p>Brightness</p>
         <input
           title="brightness"
           type="range"
@@ -56,7 +59,7 @@
       </div>
 
       <div id="saturation-container">
-        <p>Contrast</p>
+        <p>Saturation</p>
         <input
           title="saturation"
           type="range"
@@ -66,8 +69,6 @@
       </div>
     </div>
     <script type="module" src="app.js"></script>
-    <script type="module" src="utility.js"></script>
-    <script type="module" src="constants.js"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
