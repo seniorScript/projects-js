@@ -38,12 +38,14 @@ const cropSwitcher = document.getElementById("crop-switcher");
 const filterSwitcher = document.getElementById("filter-switcher");
 
 filterSwitcher.addEventListener("click", (e) => {
+  if (!currentImage) return;
   removeActiveClass();
   filterSwitcher.classList.add("selected");
   console.log("filter");
 });
 
 colorSwitcher.addEventListener("click", (e) => {
+  if (!currentImage) return;
   removeActiveClass();
   colorSwitcher.classList.add("selected");
   mode = "color";
@@ -56,6 +58,7 @@ colorSwitcher.addEventListener("click", (e) => {
 });
 
 cropSwitcher.addEventListener("click", () => {
+  if (!currentImage) return;
   mode = "crop";
   removeActiveClass();
   cropSwitcher.classList.add("selected");
