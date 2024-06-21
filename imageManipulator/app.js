@@ -6,6 +6,26 @@ const addIcon = document.getElementById("add");
 
 const pickedColor = document.getElementById("picked-color");
 
+const download = document.getElementById("download");
+
+download.addEventListener("click", () => {
+  if (currentImage) {
+    const dataURL = canvas.toDataURL("image/png");
+
+    const anchor = document.createElement("a");
+    anchor.style.display = "none";
+
+    anchor.href = dataURL;
+
+    anchor.download = "image.png";
+
+    document.body.appendChild(anchor);
+    anchor.click();
+
+    document.body.removeChild(anchor);
+  }
+});
+
 let startX, startY, endX, endY;
 let cropStart = null;
 let cropEnd = null;
