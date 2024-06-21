@@ -57,7 +57,7 @@ body {
   border-radius: 10px;
   position: fixed;
   bottom: 100px;
-  display: none;
+  /* display: none; */
 }
 
 #tools > * {
