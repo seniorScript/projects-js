@@ -47,6 +47,7 @@ colorSwitcher.addEventListener("click", (e) => {
   removeActiveClass();
   colorSwitcher.classList.add("selected");
   mode = "color";
+  pickedColor.style.display = "block";
   context.clearRect(0, 0, canvas.width, canvas.height);
 
   if (currentImage) {
@@ -80,6 +81,7 @@ function handleColorPicker(e) {
   const [R, G, B] = data;
   const hex = RgbToHex(R, G, B);
   pickedColor.style.background = hex;
+  console.log(hex);
 }
 
 function handleCrop(e) {
