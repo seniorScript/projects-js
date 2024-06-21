@@ -111,7 +111,8 @@ body {
 }
 
 #canvas {
-  display: none;
+  /* display: none; */
+  /* padding: 20px; */
 }
 
 #color-display {
@@ -132,4 +133,13 @@ body {
 .image-preview {
   max-width: 400px;
   max-height: 500px;
+}
+
+#picked-color {
+  display: inline-block;
+  width: 220px;
+  height: 30px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  display: none;
 }
