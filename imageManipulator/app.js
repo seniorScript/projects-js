@@ -14,6 +14,7 @@ const contrast = document.getElementById("contrast");
 const brightness = document.getElementById("brightness");
 const contrastText = document.getElementById("contrast-text");
 const brightText = document.getElementById("brightness-text");
+const power = document.getElementById("power");
 
 // Global variables
 let startX, startY, endX, endY;
@@ -26,6 +27,10 @@ let contrastPercentage = 100;
 let saturationPercentage = 0;
 
 // Event listeners
+power.addEventListener("click", () => {
+  window.location.reload();
+});
+
 contrast.addEventListener("change", () => {
   contrastPercentage = contrast.value;
   contrastText.innerHTML = contrastPercentage / 100;
