@@ -12,6 +12,9 @@ const switchers = document.querySelectorAll("#tools > *");
 const filterRange = document.getElementById("filter-range");
 const contrast = document.getElementById("contrast");
 const brightness = document.getElementById("brightness");
+const contrastText = document.getElementById("contrast-text");
+const brightText = document.getElementById("brightness-text");
+
 // Global variables
 let startX, startY, endX, endY;
 let cropStart = null;
@@ -19,16 +22,18 @@ let cropEnd = null;
 let mode = null;
 let currentImage = null;
 let brightnessPercentage = 100;
-let contrastPercentage = 1;
+let contrastPercentage = 100;
 let saturationPercentage = 0;
 
 // Event listeners
 contrast.addEventListener("change", () => {
   contrastPercentage = contrast.value;
+  contrastText.innerHTML = contrastPercentage / 100;
 });
 
 brightness.addEventListener("change", () => {
   brightnessPercentage = brightness.value;
+  brightText.innerHTML = brightnessPercentage;
 });
 
 download.addEventListener("click", () => {
