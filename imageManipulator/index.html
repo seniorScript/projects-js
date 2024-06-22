@@ -49,29 +49,32 @@
     <div id="filter-range">
       <div id="contrast-container">
         <p>Contrast</p>
-        <input title="contrast" type="range" name="contrast" id="contrast" />
+        <input
+          title="contrast"
+          min="1"
+          max="200"
+          type="range"
+          name="contrast"
+          id="contrast"
+          value="100"
+        />
       </div>
 
       <div id="brightness-container">
         <p>Brightness</p>
         <input
+          min="50"
+          max="150"
           title="brightness"
           type="range"
           name="brightness"
           id="brightness"
+          value="100"
         />
       </div>
-
-      <div id="saturation-container">
-        <p>Saturation</p>
-        <input
-          title="saturation"
-          type="range"
-          name="saturation"
-          id="saturation"
-        />
       </div>
     </div>
+
     <script type="module" src="app.js"></script>
     <script
       type="module"

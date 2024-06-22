@@ -10,15 +10,27 @@ const cropSwitcher = document.getElementById("crop-switcher");
 const filterSwitcher = document.getElementById("filter-switcher");
 const switchers = document.querySelectorAll("#tools > *");
 const filterRange = document.getElementById("filter-range");
-
+const contrast = document.getElementById("contrast");
+const brightness = document.getElementById("brightness");
 // Global variables
 let startX, startY, endX, endY;
 let cropStart = null;
 let cropEnd = null;
 let mode = null;
 let currentImage = null;
+let brightnessPercentage = 100;
+let contrastPercentage = 1;
+let saturationPercentage = 0;
 
 // Event listeners
+contrast.addEventListener("change", () => {
+  contrastPercentage = contrast.value;
+});
+
+brightness.addEventListener("change", () => {
+  brightnessPercentage = brightness.value;
+});
+
 download.addEventListener("click", () => {
   if (currentImage) {
     const dataURL = canvas.toDataURL("image/png");
@@ -40,9 +52,10 @@ download.addEventListener("click", () => {
 filterSwitcher.addEventListener("click", (e) => {
   if (!currentImage) return;
   removeActiveClass();
+  mode = "filter";
   filterSwitcher.classList.add("selected");
   filterRange.style.display = "block";
-  console.log("filter");
+  pickedColor.style.display = "none";
 });
 
 colorSwitcher.addEventListener("click", (e) => {
@@ -86,6 +99,7 @@ addIcon.addEventListener("click", () => {
 canvas.addEventListener("click", (e) => {
   handleColorPicker(e);
   handleCrop(e);
+  handleFilter(e);
 });
 
 canvas.addEventListener("mousemove", (e) => {
@@ -181,6 +195,26 @@ function cropTheImage() {
 
   mode = null;
   pickedColor.style.display = "none";
+}
+
+function handleFilter(e) {
+  if (mode !== "filter") return;
+
+  let tempCanvas = document.createElement("canvas");
+  let tempContext = tempCanvas.getContext("2d");
+  tempCanvas.width = canvas.width;
+  tempCanvas.height = canvas.height;
+
+  tempContext.filter = `brightness(${brightnessPercentage}%) contrast(${
+    contrastPercentage / 100
+  })`;
+
+  tempContext.drawImage(canvas, 0, 0, tempCanvas.width, tempCanvas.height);
+
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  canvas.width = tempCanvas.width;
+  canvas.height = tempCanvas.height;
+  context.drawImage(tempCanvas, 0, 0, tempCanvas.width, tempCanvas.height);
 }
 
 function createImage(file) {
