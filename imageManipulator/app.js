@@ -17,8 +17,7 @@ let cropEnd = null;
 let mode = null;
 let currentImage = null;
 
-
-
+// Event listeners
 download.addEventListener("click", () => {
   if (currentImage) {
     const dataURL = canvas.toDataURL("image/png");
@@ -65,6 +64,49 @@ cropSwitcher.addEventListener("click", () => {
   pickedColor.style.display = "none";
 });
 
+imageInput.addEventListener("change", (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    const img = createImage(file);
+    img.onload = () => {
+      drawOnCanvas(img);
+      currentImage = img;
+    };
+  }
+});
+
+addIcon.addEventListener("click", () => {
+  imageInput.click();
+});
+
+canvas.addEventListener("click", (e) => {
+  handleColorPicker(e);
+  handleCrop(e);
+});
+
+canvas.addEventListener("mousemove", (e) => {
+  if (mode === "crop" && cropStart) {
+    const pos = getMousePosition(e);
+
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (currentImage) {
+      context.drawImage(currentImage, 0, 0, canvas.width, canvas.height);
+    }
+
+    let startXPos = Math.min(startX, pos.x);
+    let startYPos = Math.min(startY, pos.y);
+    let w = Math.abs(startX - pos.x);
+    let h = Math.abs(startY - pos.y);
+
+    context.beginPath();
+    context.rect(startXPos, startYPos, w, h);
+    context.strokeStyle = "red";
+    context.stroke();
+  }
+});
+
+// Functions
 function getMousePosition(event) {
   const rect = canvas.getBoundingClientRect();
 
@@ -137,21 +179,6 @@ function cropTheImage() {
   pickedColor.style.display = "none";
 }
 
-addIcon.addEventListener("click", () => {
-  imageInput.click();
-});
-
-imageInput.addEventListener("change", (event) => {
-  const file = event.target.files[0];
-  if (file) {
-    const img = createImage(file);
-    img.onload = () => {
-      drawOnCanvas(img);
-      currentImage = img;
-    };
-  }
-});
-
 function createImage(file) {
   const img = new Image();
   img.src = URL.createObjectURL(file);
@@ -164,33 +191,7 @@ function drawOnCanvas(img) {
   context.drawImage(img, 0, 0, img.width, img.height);
 }
 
-canvas.addEventListener("click", (e) => {
-  handleColorPicker(e);
-  handleCrop(e);
-});
-
-canvas.addEventListener("mousemove", (e) => {
-  if (mode === "crop" && cropStart) {
-    const pos = getMousePosition(e);
-
-    context.clearRect(0, 0, canvas.width, canvas.height);
-
-    if (currentImage) {
-      context.drawImage(currentImage, 0, 0, canvas.width, canvas.height);
-    }
-
-    let startXPos = Math.min(startX, pos.x);
-    let startYPos = Math.min(startY, pos.y);
-    let w = Math.abs(startX - pos.x);
-    let h = Math.abs(startY - pos.y);
-
-    context.beginPath();
-    context.rect(startXPos, startYPos, w, h);
-    context.strokeStyle = "red";
-    context.stroke();
-  }
-});
-
+// Utility Functions
 function RgbToHex(r, g, b) {
   return `#${[r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("")}`;
 }
