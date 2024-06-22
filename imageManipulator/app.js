@@ -22,6 +22,7 @@ let cropStart = null;
 let cropEnd = null;
 let mode = null;
 let currentImage = null;
+let originalImage = null; // Reference to the original image
 let brightnessPercentage = 100;
 let contrastPercentage = 100;
 let saturationPercentage = 0;
@@ -34,13 +35,13 @@ power.addEventListener("click", () => {
 contrast.addEventListener("change", () => {
   contrastPercentage = contrast.value;
   contrastText.innerHTML = contrastPercentage / 100;
-  canvas.click();
+  applyFilter();
 });
 
 brightness.addEventListener("change", () => {
   brightnessPercentage = brightness.value;
   brightText.innerHTML = brightnessPercentage;
-  canvas.click();
+  applyFilter();
 });
 
 download.addEventListener("click", () => {
@@ -100,6 +101,8 @@ imageInput.addEventListener("change", (event) => {
     img.onload = () => {
       drawOnCanvas(img);
       currentImage = img;
+      originalImage = new Image();
+      originalImage.src = img.src;
     };
   }
 });
@@ -204,32 +207,29 @@ function cropTheImage() {
 
   currentImage = new Image();
   currentImage.src = tempCanvas.toDataURL();
-
+  originalImage.src = currentImage.src;
   mode = null;
   pickedColor.style.display = "none";
 }
 
 function handleFilter(e) {
   if (mode !== "filter") return;
+  applyFilter();
+}
 
+function applyFilter() {
+  if (!originalImage) return;
+
+  // Clear the main canvas
   context.clearRect(0, 0, canvas.width, canvas.height);
-  context.drawImage(currentImage, 0, 0, canvas.width, canvas.height);
 
-  let tempCanvas = document.createElement("canvas");
-  let tempContext = tempCanvas.getContext("2d");
-  tempCanvas.width = canvas.width;
-  tempCanvas.height = canvas.height;
+  // Reset the filter to none before drawing the original image
+  context.filter = "none";
+  context.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
 
-  tempContext.filter = `brightness(${brightnessPercentage}%) contrast(${
-    contrastPercentage / 100
-  })`;
-
-  tempContext.drawImage(canvas, 0, 0, tempCanvas.width, tempCanvas.height);
-
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  canvas.width = tempCanvas.width;
-  canvas.height = tempCanvas.height;
-  context.drawImage(tempCanvas, 0, 0, tempCanvas.width, tempCanvas.height);
+  // Apply the new filter
+  context.filter = `brightness(${brightnessPercentage}%) contrast(${contrastPercentage}%)`;
+  context.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
 }
 
 function createImage(file) {
