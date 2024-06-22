@@ -212,6 +212,9 @@ function cropTheImage() {
 function handleFilter(e) {
   if (mode !== "filter") return;
 
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.drawImage(currentImage, 0, 0, canvas.width, canvas.height);
+
   let tempCanvas = document.createElement("canvas");
   let tempContext = tempCanvas.getContext("2d");
   tempCanvas.width = canvas.width;
