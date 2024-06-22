@@ -1,12 +1,23 @@
+// DOM elements
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
-
 const imageInput = document.getElementById("image-input");
 const addIcon = document.getElementById("add");
-
 const pickedColor = document.getElementById("picked-color");
-
 const download = document.getElementById("download");
+const colorSwitcher = document.getElementById("color-switcher");
+const cropSwitcher = document.getElementById("crop-switcher");
+const filterSwitcher = document.getElementById("filter-switcher");
+const switchers = document.querySelectorAll("#tools > *");
+
+// Global variables
+let startX, startY, endX, endY;
+let cropStart = null;
+let cropEnd = null;
+let mode = null;
+let currentImage = null;
+
+
 
 download.addEventListener("click", () => {
   if (currentImage) {
@@ -25,17 +36,6 @@ download.addEventListener("click", () => {
     document.body.removeChild(anchor);
   }
 });
-
-let startX, startY, endX, endY;
-let cropStart = null;
-let cropEnd = null;
-
-let mode = null;
-let currentImage = null;
-
-const colorSwitcher = document.getElementById("color-switcher");
-const cropSwitcher = document.getElementById("crop-switcher");
-const filterSwitcher = document.getElementById("filter-switcher");
 
 filterSwitcher.addEventListener("click", (e) => {
   if (!currentImage) return;
@@ -194,8 +194,6 @@ canvas.addEventListener("mousemove", (e) => {
 function RgbToHex(r, g, b) {
   return `#${[r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("")}`;
 }
-
-const switchers = document.querySelectorAll("#tools > *");
 
 function removeActiveClass() {
   switchers.forEach((s) => {
