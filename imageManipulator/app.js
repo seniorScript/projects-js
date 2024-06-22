@@ -9,6 +9,7 @@ const colorSwitcher = document.getElementById("color-switcher");
 const cropSwitcher = document.getElementById("crop-switcher");
 const filterSwitcher = document.getElementById("filter-switcher");
 const switchers = document.querySelectorAll("#tools > *");
+const filterRange = document.getElementById("filter-range");
 
 // Global variables
 let startX, startY, endX, endY;
@@ -40,6 +41,7 @@ filterSwitcher.addEventListener("click", (e) => {
   if (!currentImage) return;
   removeActiveClass();
   filterSwitcher.classList.add("selected");
+  filterRange.style.display = "block";
   console.log("filter");
 });
 
@@ -49,6 +51,7 @@ colorSwitcher.addEventListener("click", (e) => {
   colorSwitcher.classList.add("selected");
   mode = "color";
   pickedColor.style.display = "block";
+  filterRange.style.display = "none";
   context.clearRect(0, 0, canvas.width, canvas.height);
 
   if (currentImage) {
@@ -61,6 +64,7 @@ cropSwitcher.addEventListener("click", () => {
   mode = "crop";
   removeActiveClass();
   cropSwitcher.classList.add("selected");
+  filterRange.style.display = "none";
   pickedColor.style.display = "none";
 });
 
