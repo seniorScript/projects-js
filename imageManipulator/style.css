@@ -110,11 +110,6 @@ body {
   display: none;
 }
 
-#canvas {
-  /* display: none; */
-  /* padding: 20px; */
-}
-
 #color-display {
   width: 150px;
   height: 30px;
