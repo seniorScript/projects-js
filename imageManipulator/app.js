@@ -34,11 +34,13 @@ power.addEventListener("click", () => {
 contrast.addEventListener("change", () => {
   contrastPercentage = contrast.value;
   contrastText.innerHTML = contrastPercentage / 100;
+  canvas.click();
 });
 
 brightness.addEventListener("change", () => {
   brightnessPercentage = brightness.value;
   brightText.innerHTML = brightnessPercentage;
+  canvas.click();
 });
 
 download.addEventListener("click", () => {
