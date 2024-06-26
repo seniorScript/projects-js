@@ -58,3 +58,10 @@ function isDraw() {
     return cell.textContent === "X" || cell.textContent === "O";
   });
 }
+
+function resetBoard() {
+  cells.forEach((cell) => {
+    cell.textContent = "";
+  });
+  currentPlayer = "X";
+}
