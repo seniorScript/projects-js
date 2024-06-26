@@ -65,3 +65,7 @@ function resetBoard() {
   });
   currentPlayer = "X";
 }
+
+function switchPlayer() {
+  currentPlayer = currentPlayer === "X" ? "O" : "X";
+}
