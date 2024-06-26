@@ -2,6 +2,10 @@ const cells = document.querySelectorAll("[data-cell]");
 const draggables = document.querySelectorAll(".draggable");
 let currentPlayer = "X";
 
+draggables.forEach((draggable) => {
+  draggable.addEventListener("dragstart", dragStart);
+});
+
 cells.forEach((cell) => {
   cell.addEventListener("dragover", dragOver);
   cell.addEventListener("drop", drop);
@@ -34,6 +38,10 @@ function drop(e) {
   }
 }
 
+function switchPlayer() {
+  currentPlayer = currentPlayer === "X" ? "O" : "X";
+}
+
 function checkWin(player) {
   const winCombinations = [
     [0, 1, 2],
@@ -64,8 +72,4 @@ function resetBoard() {
     cell.textContent = "";
   });
   currentPlayer = "X";
-}
-
-function switchPlayer() {
-  currentPlayer = currentPlayer === "X" ? "O" : "X";
 }
