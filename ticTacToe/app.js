@@ -52,3 +52,9 @@ function checkWin(player) {
     });
   });
 }
+
+function isDraw() {
+  return [...cells].every((cell) => {
+    return cell.textContent === "X" || cell.textContent === "O";
+  });
+}
