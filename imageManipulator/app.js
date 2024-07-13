@@ -159,7 +159,7 @@ function handleColorPicker(e) {
   const [R, G, B] = data;
   const hex = RgbToHex(R, G, B);
   pickedColor.style.background = hex;
-  console.log(hex);
+  pickedColor.innerHTML = hex;
 }
 
 function handleCrop(e) {

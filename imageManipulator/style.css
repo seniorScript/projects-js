@@ -131,10 +131,10 @@ body {
 }
 
 #picked-color {
-  display: inline-block;
+  text-align: center;
   width: 220px;
   height: 30px;
-  border: 1px solid gray;
-  border-radius: 10px;
+  border: 1px solid rgba(128, 128, 128, 0.349);
+  border-radius: 5px;
   display: none;
 }
