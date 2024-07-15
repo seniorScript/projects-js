@@ -19,6 +19,7 @@ const initialSelection = document.getElementById("initial-selection");
 const openImageButton = document.getElementById("open-image");
 const tools = document.getElementById("tools");
 const toolbar = document.querySelector(".toolbar");
+const filters = document.getElementById("filter-range");
 
 // Global variables
 let startX, startY, endX, endY;
@@ -270,6 +271,7 @@ function drawOnCanvas(img) {
 function showTools() {
   toolbar.style.display = "flex";
   tools.style.display = "flex";
+  filters.style.display = "flex";
 }
 
 // Utility Functions
