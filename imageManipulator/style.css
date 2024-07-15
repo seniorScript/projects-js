@@ -218,6 +218,16 @@ body {
   font-family: monospace;
 }
 
+.zoomBtn {
+  background-color: #292c31;
+  color: #fff;
+  outline: 0;
+  border: 0;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
 .image-preview {
   max-width: 400px;
   max-height: 500px;
