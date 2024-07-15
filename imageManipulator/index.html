@@ -47,34 +47,42 @@
     </div>
 
     <div id="filter-range">
-      <div id="contrast-container">
-        <p>Contrast <span id="contrast-text">100</span></p>
-        <input
-          title="contrast"
-          min="1"
-          max="200"
-          type="range"
-          name="contrast"
-          id="contrast"
-          value="100"
-        />
+      <div class="filters">
+        <div id="contrast-container">
+          <p>Contrast <span id="contrast-text">100</span></p>
+          <input
+            title="contrast"
+            min="1"
+            max="200"
+            type="range"
+            name="contrast"
+            id="contrast"
+            value="100"
+          />
+        </div>
+
+        <div id="brightness-container">
+          <p>Brightness <span id="brightness-text">100</span></p>
+          <input
+            min="50"
+            max="150"
+            title="brightness"
+            type="range"
+            name="brightness"
+            id="brightness"
+            value="100"
+          />
+        </div>
       </div>
 
-      <div id="brightness-container">
-        <p>Brightness <span id="brightness-text">100</span></p>
-        <input
-          min="50"
-          max="150"
-          title="brightness"
-          type="range"
-          name="brightness"
-          id="brightness"
-          value="100"
-        />
+      <div class="zooms">
+        <button class="zoomBtn" id="zoom-in">Zoom In</button>
+        <button class="zoomBtn" id="zoom-out">Zoon Out</button>
       </div>
 
-      <button class="zoomBtn" id="zoom-in">Zoom In</button>
-      <button class="zoomBtn" id="zoom-out">Zoon Out</button>
+      <div class="crop-container">
+        <button class="zoomBtn" id="crop-btn">Crop Mode</button>
+      </div>
     </div>
 
     <script src="app.js"></script>

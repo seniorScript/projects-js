@@ -218,6 +218,12 @@ body {
   font-family: monospace;
 }
 
+.zooms {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .zoomBtn {
   background-color: #292c31;
   color: #fff;
@@ -226,6 +232,16 @@ body {
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.crop-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#crop-btn {
+  flex: 1;
 }
 
 .image-preview {
