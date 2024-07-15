@@ -14,12 +14,13 @@ const contrast = document.getElementById("contrast");
 const brightness = document.getElementById("brightness");
 const contrastText = document.getElementById("contrast-text");
 const brightText = document.getElementById("brightness-text");
-const power = document.getElementById("power");
+
 const initialSelection = document.getElementById("initial-selection");
 const openImageButton = document.getElementById("open-image");
 const tools = document.getElementById("tools");
-const toolbar = document.querySelector(".toolbar");
+
 const filters = document.getElementById("filter-range");
+const imageContainer = document.querySelector(".color-picker-container");
 
 // Global variables
 let startX, startY, endX, endY;
@@ -35,10 +36,6 @@ let saturationPercentage = 0;
 // Event listeners
 openImageButton.addEventListener("click", () => {
   imageInput.click();
-});
-
-power.addEventListener("click", () => {
-  window.location.reload();
 });
 
 contrast.addEventListener("change", () => {
@@ -260,9 +257,9 @@ function drawOnCanvas(img) {
 }
 
 function showTools() {
-  toolbar.style.display = "flex";
   tools.style.display = "flex";
   filters.style.display = "flex";
+  imageContainer.style.display = "block";
 }
 
 // Utility Functions

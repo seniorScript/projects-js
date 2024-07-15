@@ -12,8 +12,6 @@ body {
   background-color: #292c31;
   color: #fff;
   position: relative;
-  padding-bottom: 400px;
-  padding-top: 50px;
 }
 
 #initial-selection {
@@ -57,6 +55,19 @@ body {
   border: 1px solid #ffffff40;
 }
 
+.color-picker-container {
+  width: 90%;
+  max-width: 900px;
+  max-height: 500px;
+  overflow: auto;
+  background-color: #232627;
+  box-shadow: 1px 1px 1px 10px rgba(128, 128, 128, 0.349);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  display: none;
+  margin: 20px 0;
+}
+
 #canvas {
   display: none;
 }
@@ -78,8 +89,37 @@ body {
   transform: scale(1.7);
 }
 
+.add-container,
+.download-container {
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  background-color: #232627;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+}
+
+.add-container {
+  left: 0;
+  border-top-right-radius: 30px;
+}
+
+.download-container {
+  right: 0;
+  border-top-left-radius: 30px;
+}
+
 #add {
   color: #9ee22f;
+  transform: scale(1.7);
+  cursor: pointer;
+}
+
+#download {
+  transform: scale(1.7);
+  cursor: pointer;
 }
 
 #power {
@@ -111,10 +151,12 @@ body {
 
 #color-switcher {
   color: #e29a2f;
+  display: none;
 }
 
 #crop-switcher {
   color: #2fe2a0;
+  display: none;
 }
 
 #filter-switcher {
