@@ -74,9 +74,9 @@ filterSwitcher.addEventListener("click", (e) => {
   if (!currentImage) return;
   removeActiveClass();
   mode = "filter";
-  filterSwitcher.classList.add("selected");
-  filterRange.style.display = "block";
-  pickedColor.style.display = "none";
+  // filterSwitcher.classList.add("selected");
+  // filterRange.style.display = "block";
+  // pickedColor.style.display = "none";
 });
 
 colorSwitcher.addEventListener("click", (e) => {
@@ -84,8 +84,8 @@ colorSwitcher.addEventListener("click", (e) => {
   removeActiveClass();
   colorSwitcher.classList.add("selected");
   mode = "color";
-  pickedColor.style.display = "block";
-  filterRange.style.display = "none";
+  // pickedColor.style.display = "block";
+  // filterRange.style.display = "none";
   context.clearRect(0, 0, canvas.width, canvas.height);
 
   if (currentImage) {
@@ -97,9 +97,9 @@ cropSwitcher.addEventListener("click", () => {
   if (!currentImage) return;
   mode = "crop";
   removeActiveClass();
-  cropSwitcher.classList.add("selected");
-  filterRange.style.display = "none";
-  pickedColor.style.display = "none";
+  // cropSwitcher.classList.add("selected");
+  // filterRange.style.display = "none";
+  // pickedColor.style.display = "none";
 });
 
 imageInput.addEventListener("change", (event) => {
@@ -279,6 +279,6 @@ function RgbToHex(r, g, b) {
 
 function removeActiveClass() {
   switchers.forEach((s) => {
-    s.classList.remove("selected");
+    // s.classList.remove("selected");
   });
 }
