@@ -16,6 +16,7 @@ const contrastText = document.getElementById("contrast-text");
 const brightText = document.getElementById("brightness-text");
 const power = document.getElementById("power");
 const initialSelection = document.getElementById("initial-selection");
+const openImageButton = document.getElementById("open-image");
 
 // Global variables
 let startX, startY, endX, endY;
@@ -29,7 +30,7 @@ let contrastPercentage = 100;
 let saturationPercentage = 0;
 
 // Event listeners
-initialSelection.addEventListener("click", () => {
+openImageButton.addEventListener("click", () => {
   imageInput.click();
 });
 
@@ -108,6 +109,7 @@ imageInput.addEventListener("change", (event) => {
       currentImage = img;
       originalImage = new Image();
       originalImage.src = img.src;
+      initialSelection.style.display = "none";
     };
   }
 });
