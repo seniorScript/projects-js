@@ -7,7 +7,7 @@ const pickedColor = document.getElementById("picked-color");
 const download = document.getElementById("download");
 const colorSwitcher = document.getElementById("color-switcher");
 const cropSwitcher = document.getElementById("crop-switcher");
-const filterSwitcher = document.getElementById("filter-switcher");
+
 const switchers = document.querySelectorAll("#tools > *");
 const filterRange = document.getElementById("filter-range");
 const contrast = document.getElementById("contrast");
@@ -69,15 +69,6 @@ download.addEventListener("click", () => {
 
     document.body.removeChild(anchor);
   }
-});
-
-filterSwitcher.addEventListener("click", (e) => {
-  if (!currentImage) return;
-  removeActiveClass();
-  mode = "filter";
-  // filterSwitcher.classList.add("selected");
-  // filterRange.style.display = "block";
-  // pickedColor.style.display = "none";
 });
 
 colorSwitcher.addEventListener("click", (e) => {
