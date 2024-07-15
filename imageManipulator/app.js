@@ -22,6 +22,9 @@ const tools = document.getElementById("tools");
 const filters = document.getElementById("filter-range");
 const imageContainer = document.querySelector(".color-picker-container");
 
+const zoomInBtn = document.getElementById("zoom-in");
+const zoomOutBtn = document.getElementById("zoom-out");
+
 // Global variables
 let startX, startY, endX, endY;
 let cropStart = null;
@@ -32,8 +35,17 @@ let originalImage = null; // Reference to the original image
 let brightnessPercentage = 100;
 let contrastPercentage = 100;
 let saturationPercentage = 0;
+let zoomLevel = 1;
 
 // Event listeners
+zoomInBtn.addEventListener("click", () => {
+  zoomIn();
+});
+
+zoomOutBtn.addEventListener("click", () => {
+  zoomOut();
+});
+
 openImageButton.addEventListener("click", () => {
   imageInput.click();
 });
@@ -262,6 +274,10 @@ function showTools() {
   imageContainer.style.display = "block";
 }
 
+function applyZoom() {
+  canvas.style.transform = `scale(${zoomLevel})`;
+}
+
 // Utility Functions
 function RgbToHex(r, g, b) {
   return `#${[r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("")}`;
@@ -271,4 +287,14 @@ function removeActiveClass() {
   switchers.forEach((s) => {
     // s.classList.remove("selected");
   });
+}
+
+function zoomIn() {
+  zoomLevel += 0.1;
+  applyZoom();
+}
+
+function zoomOut() {
+  zoomLevel -= 0.1;
+  applyZoom();
 }
