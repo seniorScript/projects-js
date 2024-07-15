@@ -6,12 +6,14 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  align-items: start;
+  flex-wrap: wrap;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #292c31;
   color: #fff;
   position: relative;
+  gap: 20px;
+  padding: 50px;
 }
 
 #initial-selection {
@@ -56,16 +58,16 @@ body {
 }
 
 .color-picker-container {
-  width: 90%;
+  width: 95%;
   max-width: 900px;
   max-height: 500px;
   overflow: auto;
   background-color: #232627;
-  box-shadow: 1px 1px 1px 10px rgba(128, 128, 128, 0.349);
+  /* box-shadow: 1px 1px 1px 10px rgba(128, 128, 128, 0.349); */
+  border: 5px solid gray;
   -ms-overflow-style: none;
   scrollbar-width: none;
   display: none;
-  margin: 20px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -169,19 +171,6 @@ body {
   color: #6e84ff;
 }
 
-.image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.image-container form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 #image-form label {
   position: absolute;
   top: 50px;
@@ -211,11 +200,10 @@ body {
 
 #filter-range {
   width: 95%;
-  max-width: 450px;
+  max-width: 400px;
   background-color: #232627;
   border-radius: 10px;
   padding: 20px;
-  margin: 20px 0;
   display: flex;
   flex-direction: column;
   gap: 40px;
