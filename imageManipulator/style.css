@@ -11,11 +11,49 @@ body {
   gap: 20px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  background-color: #101015;
+  background-color: #292c31;
   color: #fff;
   position: relative;
   padding: 100px 0 200px;
   overflow-y: scroll;
+}
+
+#initial-selection {
+  width: 90%;
+  max-width: 500px;
+  background-color: #25282c;
+  border: 1px dashed rgba(128, 128, 128, 0.385);
+  border-radius: 10px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  color: rgb(161, 159, 159);
+  font-size: 20px;
+  height: 400px;
+  justify-content: center;
+  align-items: center;
+}
+
+#open-image {
+  background-color: #088080;
+  color: #fff;
+  border-radius: 20px;
+  padding: 6px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 16px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+#image-icon {
+  transform: scale(3);
+  color: #c8c9ca;
 }
 
 .selected {

@@ -15,6 +15,7 @@ const brightness = document.getElementById("brightness");
 const contrastText = document.getElementById("contrast-text");
 const brightText = document.getElementById("brightness-text");
 const power = document.getElementById("power");
+const initialSelection = document.getElementById("initial-selection");
 
 // Global variables
 let startX, startY, endX, endY;
@@ -28,6 +29,10 @@ let contrastPercentage = 100;
 let saturationPercentage = 0;
 
 // Event listeners
+initialSelection.addEventListener("click", () => {
+  imageInput.click();
+});
+
 power.addEventListener("click", () => {
   window.location.reload();
 });
