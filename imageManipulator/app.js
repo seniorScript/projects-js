@@ -96,11 +96,13 @@ colorSwitcher.addEventListener("click", (e) => {
 
 cropSwitcher.addEventListener("click", () => {
   if (!currentImage) return;
-  mode = "crop";
-  removeActiveClass();
-  // cropSwitcher.classList.add("selected");
-  // filterRange.style.display = "none";
-  // pickedColor.style.display = "none";
+  if (mode === "crop") {
+    mode = null;
+    cropSwitcher.classList.remove("selected");
+  } else {
+    mode = "crop";
+    cropSwitcher.classList.toggle("selected");
+  }
 });
 
 imageInput.addEventListener("change", (event) => {
@@ -232,7 +234,7 @@ function cropTheImage() {
   currentImage.src = tempCanvas.toDataURL();
   originalImage.src = currentImage.src;
   mode = null;
-  pickedColor.style.display = "none";
+  cropSwitcher.classList.remove("selected");
 }
 
 function handleFilter(e) {

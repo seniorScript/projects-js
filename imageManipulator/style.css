@@ -160,11 +160,12 @@ body {
 #color-switcher {
   color: #e29a2f;
   display: none;
+  width: 100%;
+  height: 100%;
 }
 
-#crop-switcher {
-  color: #2fe2a0;
-  display: none;
+#crop-switcher.selected {
+  background: rgba(255, 255, 0, 0.168);
 }
 
 #filter-switcher {
