@@ -1,0 +1,40 @@
+:root {
+  --primary-color: #659365;
+  --secondary-color: #073340;
+  --font-size-medium: 1.125rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.section-text {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.section-text h2 {
+  font-size: 2rem;
+  padding-bottom: 10px;
+}
+
+.section-text p {
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
