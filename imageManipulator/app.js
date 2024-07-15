@@ -17,6 +17,8 @@ const brightText = document.getElementById("brightness-text");
 const power = document.getElementById("power");
 const initialSelection = document.getElementById("initial-selection");
 const openImageButton = document.getElementById("open-image");
+const tools = document.getElementById("tools");
+const toolbar = document.querySelector(".toolbar");
 
 // Global variables
 let startX, startY, endX, endY;
@@ -105,6 +107,7 @@ imageInput.addEventListener("change", (event) => {
   if (file) {
     const img = createImage(file);
     img.onload = () => {
+      showTools();
       drawOnCanvas(img);
       currentImage = img;
       originalImage = new Image();
@@ -258,9 +261,15 @@ function createImage(file) {
 }
 
 function drawOnCanvas(img) {
+  canvas.style.display = "block";
   canvas.width = img.width;
   canvas.height = img.height;
   context.drawImage(img, 0, 0, img.width, img.height);
+}
+
+function showTools() {
+  toolbar.style.display = "flex";
+  tools.style.display = "flex";
 }
 
 // Utility Functions
