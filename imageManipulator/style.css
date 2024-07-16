@@ -58,7 +58,7 @@ body {
 }
 
 .color-picker-container {
-  width: 95%;
+  width: 100%;
   max-width: 900px;
   max-height: 500px;
   overflow: auto;
@@ -200,7 +200,7 @@ body {
 }
 
 #filter-range {
-  width: 95%;
+  width: 100%;
   max-width: 400px;
   background-color: #232627;
   border-radius: 10px;
