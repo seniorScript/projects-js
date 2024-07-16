@@ -151,6 +151,8 @@ imageInput.addEventListener("change", (event) => {
     img.onload = () => {
       showTools();
       drawOnCanvas(img);
+      zoomLevel = 1;
+      applyZoom();
       currentImage = img;
       originalImage = new Image();
       originalImage.src = img.src;
