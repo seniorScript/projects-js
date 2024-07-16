@@ -166,7 +166,7 @@ body {
 }
 
 #crop-switcher.selected {
-  background: rgba(255, 255, 0, 0.168);
+  background: #088080;
 }
 
 #filter-switcher {
@@ -222,7 +222,7 @@ body {
 
 .zooms {
   display: flex;
-  flex-direction: column;
+  height: 60px;
   gap: 10px;
 }
 
@@ -234,6 +234,7 @@ body {
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
+  flex: 1;
 }
 
 .crop-container {
