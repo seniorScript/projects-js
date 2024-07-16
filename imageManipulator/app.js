@@ -2,9 +2,9 @@
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 const imageInput = document.getElementById("image-input");
-const addIcon = document.getElementById("add");
+const addIcon = document.querySelector(".add-container");
 const pickedColor = document.getElementById("picked-color");
-const download = document.getElementById("download");
+const download = document.querySelector(".download-container");
 const colorSwitcher = document.getElementById("color-switcher");
 const cropSwitcher = document.getElementById("crop-switcher");
 
@@ -20,7 +20,7 @@ const openImageButton = document.getElementById("open-image");
 const tools = document.getElementById("tools");
 
 const filters = document.getElementById("filter-range");
-const imageContainer = document.querySelector(".color-picker-container");
+const imageContainer = document.querySelector(".canvas-container");
 
 const zoomInBtn = document.getElementById("zoom-in");
 const zoomOutBtn = document.getElementById("zoom-out");
@@ -186,7 +186,6 @@ canvas.addEventListener("mousemove", (e) => {
 
     context.beginPath();
     context.rect(startXPos, startYPos, w, h);
-    context.strokeStyle = "red";
     context.stroke();
   }
 });
@@ -303,16 +302,17 @@ function createImage(file) {
 }
 
 function drawOnCanvas(img) {
-  canvas.style.display = "block";
+  canvas.style.display = "flex";
   canvas.width = img.width;
   canvas.height = img.height;
+
   context.drawImage(img, 0, 0, img.width, img.height);
 }
 
 function showTools() {
   tools.style.display = "flex";
   filters.style.display = "flex";
-  imageContainer.style.display = "block";
+  imageContainer.style.display = "flex";
 }
 
 function applyZoom() {
