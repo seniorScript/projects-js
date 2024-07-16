@@ -63,7 +63,6 @@ body {
   max-height: 500px;
   overflow: auto;
   background-color: #232627;
-  /* box-shadow: 1px 1px 1px 10px rgba(128, 128, 128, 0.349); */
   border: 5px solid gray;
   -ms-overflow-style: none;
   scrollbar-width: none;
