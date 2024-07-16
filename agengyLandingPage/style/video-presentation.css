@@ -1,0 +1,68 @@
+.video-presentation {
+  background-color: rgb(185, 242, 161, 0.4);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-presentation > div {
+  display: grid;
+  place-items: center;
+  max-width: 1200px;
+  padding: 40px;
+  gap: 40px;
+}
+
+.video-presentation div h2 {
+  font-size: 2rem;
+}
+
+.video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.video img:first-child {
+  width: 100%;
+}
+
+.video img:last-child {
+  position: absolute;
+  cursor: pointer;
+}
+
+.video-presentation div button.btn-contact {
+  width: 100%;
+  max-width: 200px;
+}
+
+.video-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.video img:first-child {
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 850px) {
+  .video-text {
+    text-align: left;
+  }
+  .video-presentation > div {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    justify-items: stretch;
+    align-items: center;
+  }
+
+  .video {
+    grid-row: 1/3;
+    grid-column: 2/3;
+  }
+}
