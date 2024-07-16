@@ -37,7 +37,46 @@ let contrastPercentage = 100;
 let saturationPercentage = 0;
 let zoomLevel = 1;
 
+let scrollStart = false;
+let scrollStartX, scrollStartY;
+
 // Event listeners
+imageContainer.addEventListener("mousedown", (e) => {
+  scrollStart = true;
+  scrollStartX = e.clientX;
+  scrollStartY = e.clientY;
+});
+
+imageContainer.addEventListener("mousemove", (e) => {
+  if (scrollStart) {
+    let pos = {
+      x: e.clientX,
+      y: e.clientY,
+    };
+
+    let scrollXAmount = scrollStartX - pos.x;
+    let scrollYAmount = scrollStartY - pos.y;
+
+    imageContainer.scrollLeft += scrollXAmount;
+    imageContainer.scrollTop += scrollYAmount;
+
+    scrollStartX = pos.x;
+    scrollStartY = pos.y;
+  }
+});
+
+imageContainer.addEventListener("mouseup", () => {
+  scrollStart = false;
+  scrollStartX = null;
+  scrollStartY = null;
+});
+
+imageContainer.addEventListener("mouseleave", () => {
+  scrollStart = false;
+  scrollStartX = null;
+  scrollStartY = null;
+});
+
 zoomInBtn.addEventListener("click", () => {
   zoomIn();
 });
