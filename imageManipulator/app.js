@@ -7,21 +7,17 @@ const pickedColor = document.getElementById("picked-color");
 const download = document.querySelector(".download-container");
 const colorSwitcher = document.getElementById("color-switcher");
 const cropSwitcher = document.getElementById("crop-switcher");
-
 const switchers = document.querySelectorAll("#tools > *");
 const filterRange = document.getElementById("filter-range");
 const contrast = document.getElementById("contrast");
 const brightness = document.getElementById("brightness");
 const contrastText = document.getElementById("contrast-text");
 const brightText = document.getElementById("brightness-text");
-
 const initialSelection = document.getElementById("initial-selection");
 const openImageButton = document.getElementById("open-image");
 const tools = document.getElementById("tools");
-
 const filters = document.getElementById("filter-range");
 const imageContainer = document.querySelector(".canvas-container");
-
 const zoomInBtn = document.getElementById("zoom-in");
 const zoomOutBtn = document.getElementById("zoom-out");
 
@@ -36,7 +32,6 @@ let brightnessPercentage = 100;
 let contrastPercentage = 100;
 let saturationPercentage = 0;
 let zoomLevel = 1;
-
 let scrollStart = false;
 let scrollStartX, scrollStartY;
 
@@ -104,17 +99,12 @@ brightness.addEventListener("change", () => {
 download.addEventListener("click", () => {
   if (currentImage) {
     const dataURL = canvas.toDataURL("image/png");
-
     const anchor = document.createElement("a");
     anchor.style.display = "none";
-
     anchor.href = dataURL;
-
     anchor.download = "image.png";
-
     document.body.appendChild(anchor);
     anchor.click();
-
     document.body.removeChild(anchor);
   }
 });
@@ -124,8 +114,6 @@ colorSwitcher.addEventListener("click", (e) => {
   removeActiveClass();
   colorSwitcher.classList.add("selected");
   mode = "color";
-  // pickedColor.style.display = "block";
-  // filterRange.style.display = "none";
   context.clearRect(0, 0, canvas.width, canvas.height);
 
   if (currentImage) {
