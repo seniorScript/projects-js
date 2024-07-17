@@ -157,6 +157,16 @@ imageInput.addEventListener("change", (event) => {
       originalImage = new Image();
       originalImage.src = img.src;
       initialSelection.style.display = "none";
+
+      brightnessPercentage = 100;
+      brightness.value = brightnessPercentage;
+      brightText.innerHTML = 100;
+
+      contrastPercentage = 100;
+      contrast.value = contrastPercentage;
+      contrastText.innerHTML = 100;
+
+      applyFilter();
     };
   }
 });
