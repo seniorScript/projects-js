@@ -21,14 +21,6 @@
       <ion-icon id="download" name="arrow-down-circle-outline"></ion-icon>
     </div>
 
-    <div id="tools">
-      <ion-icon
-        id="color-switcher"
-        mode="color"
-        name="color-palette-outline"
-      ></ion-icon>
-    </div>
-
     <div class="image-container">
       <form id="image-form">
         <input
@@ -40,17 +32,15 @@
       </form>
     </div>
 
-    <div class="canvas-container">
-      <canvas id="canvas"></canvas>
-    </div>
+    <div class="image-place"></div>
 
     <div id="filter-range">
       <div class="filters">
         <div id="contrast-container">
-          <p>Contrast <span id="contrast-text">100</span></p>
+          <p>Contrast <span id="contrast-text">1</span></p>
           <input
             title="contrast"
-            min="1"
+            min="50"
             max="200"
             type="range"
             name="contrast"
@@ -71,11 +61,19 @@
             value="100"
           />
         </div>
-      </div>
 
-      <div class="zooms">
-        <button class="zoomBtn" id="zoom-in">Zoom In +</button>
-        <button class="zoomBtn" id="zoom-out">Zoon Out -</button>
+        <div id="grayscale-container">
+          <p>grayscale <span id="grayscale-text">0</span></p>
+          <input
+            min="0"
+            max="100"
+            title="grayscale"
+            type="range"
+            name="grayscale"
+            id="grayscale"
+            value="0"
+          />
+        </div>
       </div>
 
       <div class="crop-container">
