@@ -6,8 +6,11 @@ const cropSwitcher = document.getElementById("crop-switcher");
 const initialSelection = document.getElementById("initial-selection");
 const openImageButton = document.getElementById("open-image");
 const filters = document.getElementById("filter-range");
-const imageContainer = document.querySelector(".image-place");
+const imageContainer = document.querySelector("#canvas");
 const cropToggler = document.getElementById("crop-toggler");
+
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
 
 // filters
 const filterRange = document.getElementById("filter-range");
@@ -27,7 +30,7 @@ let currentImageURL = null;
 
 // filters
 let brightnesValue = 0;
-let contrastValue = 0;
+let contrastValue = 100;
 let grayScaleValue = 0;
 
 // Event listeners
@@ -40,8 +43,8 @@ openImageButton.addEventListener("click", () => {
 });
 
 contrast.addEventListener("change", () => {
-  contrastValue = contrast.value / 100;
-  contrastText.innerHTML = Number(contrastValue).toFixed(2);
+  contrastValue = contrast.value;
+  contrastText.innerHTML = contrastValue;
   applyFilter();
 });
 
@@ -52,13 +55,13 @@ brightness.addEventListener("change", () => {
 });
 
 grayscale.addEventListener("change", () => {
-  grayScaleValue = grayscale.value / 100;
+  grayScaleValue = grayscale.value;
   grayscaleText.innerHTML = grayScaleValue;
   applyFilter();
 });
 
 download.addEventListener("click", () => {
-  if (currentImageURL) {
+  if (currentImage) {
     const anchor = document.createElement("a");
     anchor.style.display = "none";
     anchor.href = currentImageURL;
@@ -97,17 +100,13 @@ imageInput.addEventListener("change", (event) => {
       currentImage = img;
       originalImage = new Image();
       originalImage.src = img.src;
+      currentImageURL = img.src;
       initialSelection.style.display = "none";
 
       showTools();
       applyFilter();
 
-      img.style.maxWidthwidth = "100%";
-      img.style.height = "100%";
-      img.style.maxHeight = "700px";
-
-      imageContainer.innerHTML = "";
-      imageContainer.appendChild(img);
+      drawOnCanvas(img);
     };
   }
 });
@@ -117,6 +116,15 @@ addIcon.addEventListener("click", () => {
 });
 
 // Functions
+function drawOnCanvas(img) {
+  canvas.style.display = "flex";
+  canvas.width = img.width;
+  canvas.height = img.height;
+
+  canvas.maxWidth = "100%";
+  ctx.drawImage(img, 0, 0, img.width, img.height);
+}
+
 function resetFilters() {
   contrastValue = 1;
   contrast.value = 100;
@@ -137,8 +145,11 @@ function handleFilter(e) {
 }
 
 function applyFilter() {
-  let filter = `grayscale(${grayScaleValue}) contrast(${contrastValue}) brightness(${brightnesValue}%)`;
-  currentImage.style.filter = filter;
+  if (!originalImage) return;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.filter = "none";
+  ctx.filter = `brightness(${brightnesValue}%) grayscale(${grayScaleValue}%) contrast(${contrastValue}%)`;
+  ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
 }
 
 function createImage(file) {

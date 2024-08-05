@@ -60,7 +60,7 @@ body {
 
 .canvas-container {
   width: 100%;
-  max-width: 900px;
+  max-width: 700px;
   min-width: 350px;
   height: 500px;
   overflow: auto;
@@ -69,7 +69,7 @@ body {
   scrollbar-width: none;
   cursor: grab;
   position: relative;
-  display: none;
+  /* display: none; */
 
   justify-content: center;
   align-items: center;
