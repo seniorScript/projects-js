@@ -1,5 +1,3 @@
-// import Cropper from "cropperjs";
-
 // DOM elements
 const imageInput = document.getElementById("image-input");
 const addIcon = document.querySelector(".add-container");
@@ -160,11 +158,7 @@ function cropTheImage() {
     canv.toBlob((blob) => {
       const url = URL.createObjectURL(blob);
       currentImage.src = url;
-
-      // Update the current image URL for downloading
       currentImageURL = url;
-
-      // Clean up
       mode = null;
       cropSwitcher.classList.remove("selected");
       cropper.destroy();
