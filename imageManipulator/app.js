@@ -64,7 +64,7 @@ download.addEventListener("click", () => {
   if (currentImage) {
     const anchor = document.createElement("a");
     anchor.style.display = "none";
-    anchor.href = currentImageURL;
+    anchor.href = canvas.toDataURL("image/png");
     anchor.download = "image.png";
     document.body.appendChild(anchor);
     anchor.click();
