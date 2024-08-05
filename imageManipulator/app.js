@@ -1,3 +1,5 @@
+// import Cropper from "cropperjs";
+
 // DOM elements
 const imageInput = document.getElementById("image-input");
 const addIcon = document.querySelector(".add-container");
@@ -7,6 +9,7 @@ const initialSelection = document.getElementById("initial-selection");
 const openImageButton = document.getElementById("open-image");
 const filters = document.getElementById("filter-range");
 const imageContainer = document.querySelector(".image-place");
+const cropToggler = document.getElementById("crop-toggler");
 
 // filters
 const filterRange = document.getElementById("filter-range");
@@ -21,6 +24,7 @@ const grayscaleText = document.getElementById("grayscale-text");
 let mode = null;
 let currentImage = null;
 let originalImage = null;
+let cropper = null;
 
 // filters
 let brightnesValue = 100;
@@ -28,6 +32,10 @@ let contrastValue = 100;
 let grayScaleValue = 0;
 
 // Event listeners
+cropToggler.addEventListener("click", () => {
+  cropTheImage();
+});
+
 openImageButton.addEventListener("click", () => {
   imageInput.click();
 });
@@ -68,9 +76,15 @@ cropSwitcher.addEventListener("click", () => {
   if (mode === "crop") {
     mode = null;
     cropSwitcher.classList.remove("selected");
+    cropper.destroy();
+    cropper = null;
   } else {
     mode = "crop";
     cropSwitcher.classList.toggle("selected");
+    cropper = new Cropper(currentImage, {
+      zoomable: false,
+      autocrop: true,
+    });
   }
 });
 
@@ -109,7 +123,7 @@ imageInput.addEventListener("change", (event) => {
       showTools();
       applyFilter();
 
-      img.style.width = "100%";
+      img.style.maxWidthwidth = "100%";
       img.style.height = "100%";
       img.style.maxHeight = "700px";
 
@@ -143,4 +157,20 @@ function createImage(file) {
 function showTools() {
   filters.style.display = "flex";
   imageContainer.style.display = "flex";
+}
+
+function cropTheImage() {
+  if (mode === "crop" && cropper) {
+    const canv = cropper.getCroppedCanvas();
+    canv.toBlob((blob) => {
+      const url = URL.createObjectURL(blob);
+      currentImage.src = url;
+
+      // Clean up
+      mode = null;
+      cropSwitcher.classList.remove("selected");
+      cropper.destroy();
+      cropper = null;
+    }, "image/png");
+  }
 }
