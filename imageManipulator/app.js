@@ -25,10 +25,11 @@ let mode = null;
 let currentImage = null;
 let originalImage = null;
 let cropper = null;
+let currentImageURL = null;
 
 // filters
-let brightnesValue = 100;
-let contrastValue = 100;
+let brightnesValue = 0;
+let contrastValue = 0;
 let grayScaleValue = 0;
 
 // Event listeners
@@ -59,15 +60,15 @@ grayscale.addEventListener("change", () => {
 });
 
 download.addEventListener("click", () => {
-  if (currentImage) {
-    const dataURL = canvas.toDataURL("image/png");
+  if (currentImageURL) {
     const anchor = document.createElement("a");
     anchor.style.display = "none";
-    anchor.href = dataURL;
+    anchor.href = currentImageURL;
     anchor.download = "image.png";
     document.body.appendChild(anchor);
     anchor.click();
     document.body.removeChild(anchor);
+    URL.revokeObjectURL(currentImageURL);
   }
 });
 
@@ -93,32 +94,12 @@ imageInput.addEventListener("change", (event) => {
   if (file) {
     const img = createImage(file);
     img.onload = () => {
-      contrastValue = 100;
-      contrast.value = 100;
-      contrastText.innerHTML = contrastValue;
-
-      brightnesValue = 100;
-      brightness.value = brightnesValue;
-      brightText.innerHTML = brightnesValue;
-
-      grayScaleValue = 0;
-      grayscale.value = grayScaleValue;
-      grayscaleText.innerHTML = grayScaleValue;
-
-      // reset the ranges
+      resetFilters();
 
       currentImage = img;
       originalImage = new Image();
       originalImage.src = img.src;
       initialSelection.style.display = "none";
-
-      brightnesValue = 100;
-      brightness.value = brightnesValue;
-      brightText.innerHTML = 100;
-
-      contrastValue = 1;
-      contrast.value = contrastValue;
-      contrastText.innerHTML = 1;
 
       showTools();
       applyFilter();
@@ -138,6 +119,20 @@ addIcon.addEventListener("click", () => {
 });
 
 // Functions
+function resetFilters() {
+  contrastValue = 1;
+  contrast.value = 100;
+  contrastText.innerHTML = contrastValue;
+
+  brightnesValue = 100;
+  brightness.value = brightnesValue;
+  brightText.innerHTML = brightnesValue;
+
+  grayScaleValue = 0;
+  grayscale.value = grayScaleValue;
+  grayscaleText.innerHTML = grayScaleValue;
+}
+
 function handleFilter(e) {
   if (mode !== "filter") return;
   applyFilter();
@@ -165,6 +160,9 @@ function cropTheImage() {
     canv.toBlob((blob) => {
       const url = URL.createObjectURL(blob);
       currentImage.src = url;
+
+      // Update the current image URL for downloading
+      currentImageURL = url;
 
       // Clean up
       mode = null;
