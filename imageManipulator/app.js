@@ -8,7 +8,7 @@ const openImageButton = document.getElementById("open-image");
 const filters = document.getElementById("filter-range");
 const imageContainer = document.querySelector("#canvas");
 const cropToggler = document.getElementById("crop-toggler");
-
+const canvasContainer = document.querySelector(".canvas-container");
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -83,7 +83,7 @@ cropSwitcher.addEventListener("click", () => {
   } else {
     mode = "crop";
     cropSwitcher.classList.toggle("selected");
-    cropper = new Cropper(currentImage, {
+    cropper = new Cropper(canvas, {
       zoomable: false,
       autocrop: true,
     });
@@ -96,7 +96,6 @@ imageInput.addEventListener("change", (event) => {
     const img = createImage(file);
     img.onload = () => {
       resetFilters();
-
       currentImage = img;
       originalImage = new Image();
       originalImage.src = img.src;
@@ -105,7 +104,6 @@ imageInput.addEventListener("change", (event) => {
 
       showTools();
       applyFilter();
-
       drawOnCanvas(img);
     };
   }
@@ -120,13 +118,14 @@ function drawOnCanvas(img) {
   canvas.style.display = "flex";
   canvas.width = img.width;
   canvas.height = img.height;
-
-  canvas.maxWidth = "100%";
+  canvasContainer.style.display = "flex";
+  canvas.style.maxWidth = "650px";
+  canvas.style.maxHeight = "500px";
   ctx.drawImage(img, 0, 0, img.width, img.height);
 }
 
 function resetFilters() {
-  contrastValue = 1;
+  contrastValue = 100;
   contrast.value = 100;
   contrastText.innerHTML = contrastValue;
 
