@@ -42,19 +42,19 @@ openImageButton.addEventListener("click", () => {
   imageInput.click();
 });
 
-contrast.addEventListener("change", () => {
+contrast.addEventListener("input", () => {
   contrastValue = contrast.value;
   contrastText.innerHTML = contrastValue;
   applyFilter();
 });
 
-brightness.addEventListener("change", () => {
+brightness.addEventListener("input", () => {
   brightnesValue = brightness.value;
   brightText.innerHTML = brightnesValue;
   applyFilter();
 });
 
-grayscale.addEventListener("change", () => {
+grayscale.addEventListener("input", () => {
   grayScaleValue = grayscale.value;
   grayscaleText.innerHTML = grayScaleValue;
   applyFilter();
