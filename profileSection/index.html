@@ -5,49 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../reset.css" />
     <link rel="stylesheet" href="style.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"
+      integrity="sha512-JyCZjCOZoyeQZSd5+YEAcFgz2fowJ1F1hyJOXgtKu4llIa0KneLcidn5bwfutiehUTiOuK87A986BZJMko0eWQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.css"
+      integrity="sha512-087vysR/jM0N5cp13Vlp+ZF9wx6tKbvJLwPO8Iit6J7R+n7uIMMjg37dEgexOshDmDITHYY5useeSmfD1MYiQA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.js"
+      integrity="sha512-lR8d1BXfYQuiqoM/LeGFVtxFyspzWFTZNyYIiE5O2CcAGtTCRRUMLloxATRuLz8EmR2fYqdXYlrGh+D6TVGp3g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css"
+      integrity="sha512-UtLOu9C7NuThQhuXXrGwx9Jb/z9zPQJctuAgNUBK3Z6kkSYT9wJ+2+dh6klS+TDBCV9kNPBbAxbVD+vCcfGPaA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Profile Section</title>
   </head>
   <body>
     <div class="card">
-      <div class="wrapper">
-        <div class="profile-picture">
-          <img src="../asset/bond.jpg" alt="profile picture" />
-          <input id="choose-image" type="file" title="choose your image" />
+      <div class="person-info">
+        <img src="../asset/bond.jpg" alt="james bond" id="person-img" />
+        <input
+          type="file"
+          id="image-input"
+          title="image-input"
+          accept="image/*"
+        />
+        <div class="person-bio">
+          <h2 class="gradienttext">James Bond</h2>
+          <p>Front-End Developer</p>
         </div>
       </div>
-
-      <div class="wrapper">
-        <div class="basic-info">
-          <p id="name">James Bond</p>
-          <input type="text" title="change name" id="new-name" />
-          <p id="city">London</p>
-          <input type="text" title="change city" id="new-city" />
-        </div>
-        <div id="bio">
-          <p>User interface Designer and Front-end developer</p>
-        </div>
-      </div>
-
-      <div class="wrapper">
-        <div class="action">
-          <button type="button" class="msg-btn">Message</button>
-          <button type="button" class="follow-btn">Following</button>
-        </div>
-      </div>
-
-      <div class="skills">
-        <p>Skills</p>
-        <div class="skill-list">
-          <p class="skill-card">HTML</p>
-          <p class="skill-card">CSS</p>
-          <p class="skill-card">JavaScript</p>
-          <p class="skill-card">React</p>
-          <p class="skill-card">Figma</p>
-          <p class="skill-card">Vs code</p>
-          <p class="skill-card">UI/UX</p>
-        </div>
+      <div class="btns">
+        <button title="Contact" class="contact">Contact</button>
+        <button title="follow" class="follow">Follow</button>
       </div>
     </div>
+
     <script src="app.js"></script>
   </body>
 </html>
