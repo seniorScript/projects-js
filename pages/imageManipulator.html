@@ -2,9 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../reset.css" />
-    <link rel="stylesheet" href="style.css" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="../reset.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../styles/imageManipulator.css"
+    />
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"
       integrity="sha512-JyCZjCOZoyeQZSd5+YEAcFgz2fowJ1F1hyJOXgtKu4llIa0KneLcidn5bwfutiehUTiOuK87A986BZJMko0eWQ=="
@@ -38,16 +47,30 @@
   </head>
   <body>
     <div id="initial-selection">
-      <ion-icon id="image-icon" name="images-outline"></ion-icon>
-      <button id="open-image" title="Choose-image-button">Open an Image</button>
+      <ion-icon
+        id="image-icon"
+        name="images-outline"
+      ></ion-icon>
+      <button
+        id="open-image"
+        title="Choose-image-button"
+      >
+        Open an Image
+      </button>
     </div>
 
     <div class="add-container">
-      <ion-icon id="add" name="add-circle-outline"></ion-icon>
+      <ion-icon
+        id="add"
+        name="add-circle-outline"
+      ></ion-icon>
     </div>
 
     <div class="download-container">
-      <ion-icon id="download" name="arrow-down-circle-outline"></ion-icon>
+      <ion-icon
+        id="download"
+        name="arrow-down-circle-outline"
+      ></ion-icon>
     </div>
 
     <div class="image-container">
@@ -108,12 +131,22 @@
       </div>
 
       <div class="crop-container">
-        <button class="zoomBtn" id="crop-switcher">Crop Mode</button>
-        <button class="zoomBtn" id="crop-toggler">Crop it</button>
+        <button
+          class="zoomBtn"
+          id="crop-switcher"
+        >
+          Crop Mode
+        </button>
+        <button
+          class="zoomBtn"
+          id="crop-toggler"
+        >
+          Crop it
+        </button>
       </div>
     </div>
 
-    <script src="app.js"></script>
+    <script src="../scripts/imageManipulator.js"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"

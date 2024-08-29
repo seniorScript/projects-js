@@ -50,7 +50,6 @@ body {
   font-size: 2em;
   font-weight: bold;
   cursor: pointer;
-  user-select: none;
   border-radius: 5px;
 }
 
