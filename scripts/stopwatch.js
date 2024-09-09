@@ -1,94 +1,68 @@
-const hour = document.getElementById("hour");
-const minutes = document.getElementById("minutes");
-const seconds = document.getElementById("seconds");
-
-const start = document.getElementById("start");
-const stop = document.getElementById("stop");
-const reset = document.getElementById("reset");
+const { hour, minutes, seconds, start, stop, reset } = {
+  hour: document.getElementById("hour"),
+  minutes: document.getElementById("minutes"),
+  seconds: document.getElementById("seconds"),
+  start: document.getElementById("start"),
+  stop: document.getElementById("stop"),
+  reset: document.getElementById("reset"),
+};
 
 class Stopwatch {
   constructor() {
     this.totalTime = 0;
-    this.counter = 0;
-    this.time = {
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-    };
     this.running = false;
-    this.intervalId = null;
+    this.lastTimestamp = null;
   }
 
-  // start the stopwatch
   start() {
-    if (this.running) {
-      return;
-    } else {
-      this.counter = Date.now();
-      this.running = true;
+    if (this.running) return;
 
-      this.intervalId = setInterval(() => {
-        this.totalTime += Date.now() - this.counter;
-        this.counter = Date.now();
-        this.updateTime(this.totalTime);
-        this.updateDisplay();
-      }, 1000); // Update every second
-    }
+    this.running = true;
+    this.lastTimestamp = Date.now();
+    this.update();
   }
 
-  // stop the stopwatch
   stop() {
-    if (this.running) {
-      clearInterval(this.intervalId);
-      this.totalTime += Date.now() - this.counter;
-      this.updateTime(this.totalTime);
-      this.updateDisplay();
-      this.running = false;
-      this.intervalId = null;
-    } else {
-      return;
-    }
+    if (!this.running) return;
+
+    this.running = false;
+    this.totalTime += Date.now() - this.lastTimestamp;
   }
 
-  // update the time based on timeElapsed
-  updateTime(timeElapsed) {
-    this.time.hours = Math.floor(timeElapsed / 3600000);
-    let remainder = timeElapsed % 3600000;
+  update() {
+    if (!this.running) return;
 
-    this.time.minutes = Math.floor(remainder / 60000);
-    remainder = remainder % 60000;
+    const now = Date.now();
+    this.totalTime += now - this.lastTimestamp;
+    this.lastTimestamp = now;
 
-    this.time.seconds = Math.floor(remainder / 1000);
+    this.updateDisplay();
+    requestAnimationFrame(() => this.update());
   }
 
   updateDisplay() {
-    hour.textContent = this.time.hours.toString().padStart(2, "0");
-    minutes.textContent = this.time.minutes.toString().padStart(2, "0");
-    seconds.textContent = this.time.seconds.toString().padStart(2, "0");
+    const time = this.getTimeComponents(this.totalTime);
+    hour.textContent = time.hours.toString().padStart(2, "0");
+    minutes.textContent = time.minutes.toString().padStart(2, "0");
+    seconds.textContent = time.seconds.toString().padStart(2, "0");
+  }
+
+  getTimeComponents(timeElapsed) {
+    const hours = Math.floor(timeElapsed / 3600000);
+    const minutes = Math.floor((timeElapsed % 3600000) / 60000);
+    const seconds = Math.floor((timeElapsed % 60000) / 1000);
+    return { hours, minutes, seconds };
   }
 
   reset() {
     this.stop();
     this.totalTime = 0;
-    this.time = {
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-    };
     this.updateDisplay();
   }
 }
 
 const watch = new Stopwatch();
 
-start.addEventListener("click", () => {
-  watch.start();
-});
-
-stop.addEventListener("click", () => {
-  watch.stop();
-});
-
-reset.addEventListener("click", () => {
-  watch.reset();
-});
+start.addEventListener("click", () => watch.start());
+stop.addEventListener("click", () => watch.stop());
+reset.addEventListener("click", () => watch.reset());
