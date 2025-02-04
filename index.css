@@ -22,6 +22,7 @@ body {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
   margin: 10px;
 }
@@ -44,6 +45,7 @@ body {
   background-color: transparent;
   border: 3px solid gray;
   border-radius: 5px;
+  display: none;
 }
 
 .project .project-description {
