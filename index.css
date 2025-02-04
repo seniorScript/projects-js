@@ -27,6 +27,10 @@ body {
   margin: 10px;
 }
 
+.project:hover {
+  background-color: #313133dc;
+}
+
 .project p {
   display: flex;
   align-items: center;
