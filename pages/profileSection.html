@@ -2,18 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <link
-      rel="stylesheet"
-      href="../reset.css"
-    />
-    <link
-      rel="stylesheet"
-      href="../styles/profileSection.css"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../reset.css" />
+    <link rel="stylesheet" href="../styles/profileSection.css" />
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
@@ -57,11 +48,13 @@
   <body>
     <div class="card">
       <div class="person-info">
-        <img
-          src="../asset/images/bond.jpg"
-          alt="james bond"
-          id="person-img"
-        />
+        <div class="prof-image-container">
+          <img
+            src="../asset/images/bond.jpg"
+            alt="profile image"
+            id="person-img"
+          />
+        </div>
         <input
           type="file"
           id="image-input"
@@ -74,21 +67,18 @@
         </div>
       </div>
       <div class="btns">
-        <button
-          title="Contact"
-          class="contact"
-        >
-          Contact
-        </button>
-        <button
-          title="follow"
-          class="follow"
-        >
-          Follow
-        </button>
+        <button title="Contact" class="contact">Contact</button>
+        <button title="follow" class="follow">Follow</button>
       </div>
     </div>
 
-    <script src="../scripts/profileSection.js"></script>
+    <div class="container">
+      <div class="image-container">
+        <img src="../asset/images/bond.jpg" id="air" alt="" />
+      </div>
+      <button id="crop-btn">Click to crop</button>
+    </div>
+
+    <script src="../scripts/profileSection.js" type="module"></script>
   </body>
 </html>
